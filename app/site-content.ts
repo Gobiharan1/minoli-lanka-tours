@@ -27,6 +27,9 @@ export type SitePageData = {
   startAt: number;
 };
 
+export type RoutePoint = { name: string; x: number; y: number };
+export type TourRoute = { label: string; points: RoutePoint[] };
+
 const designDirectionWords = /(?:layout|image|slider|carousel|grid|card|section|CTA|button|photos?|form|background|placeholder|visual recommendation)/i;
 
 function prepared(raw: string) {
@@ -123,6 +126,84 @@ export const roundTours = [
     route: "Airport → Negombo → Anuradhapura → Sigiriya → Kandy → Ella → Yala → Mirissa → Galle → Bentota → Colombo",
   },
 ] as const;
+
+export const routeMaps: Record<string, TourRoute> = {
+  "kandy-city-tour": {
+    label: "Kandy cultural loop",
+    points: [
+      { name: "Kandy", x: 44, y: 36 }, { name: "Temple of the Tooth", x: 48, y: 38 },
+      { name: "Peradeniya", x: 37, y: 40 }, { name: "View Point", x: 45, y: 33 }, { name: "Kandy", x: 44, y: 36 },
+    ],
+  },
+  "sigiriya-day-tour-from-kandy": {
+    label: "Kandy to Sri Lanka’s Cultural Triangle",
+    points: [
+      { name: "Kandy", x: 44, y: 36 }, { name: "Matale", x: 47, y: 29 }, { name: "Dambulla", x: 50, y: 23 },
+      { name: "Sigiriya", x: 55, y: 17 }, { name: "Minneriya", x: 64, y: 21 }, { name: "Kandy", x: 44, y: 36 },
+    ],
+  },
+  "nuwara-eliya-day-tour-from-kandy": {
+    label: "Kandy to the cool highlands",
+    points: [
+      { name: "Kandy", x: 44, y: 36 }, { name: "Ramboda Falls", x: 41, y: 44 }, { name: "Tea Country", x: 45, y: 48 },
+      { name: "Nuwara Eliya", x: 47, y: 53 }, { name: "Gregory Lake", x: 51, y: 55 }, { name: "Kandy", x: 44, y: 36 },
+    ],
+  },
+  "kitulgala-day-tour-from-kandy": {
+    label: "Kandy to Kitulgala rainforest",
+    points: [
+      { name: "Kandy", x: 44, y: 36 }, { name: "Ginigathhena", x: 34, y: 47 }, { name: "Kitulgala", x: 28, y: 53 },
+      { name: "Kelani River", x: 24, y: 57 }, { name: "Kandy", x: 44, y: 36 },
+    ],
+  },
+  "polonnaruwa-day-tour-from-kandy": {
+    label: "Kandy to medieval Polonnaruwa",
+    points: [
+      { name: "Kandy", x: 44, y: 36 }, { name: "Dambulla", x: 50, y: 23 }, { name: "Polonnaruwa", x: 69, y: 23 },
+      { name: "Gal Vihara", x: 71, y: 19 }, { name: "Minneriya", x: 63, y: 21 }, { name: "Kandy", x: 44, y: 36 },
+    ],
+  },
+  "sri-lanka-classic-highlights-4-days": {
+    label: "Classic Highlights route",
+    points: [
+      { name: "Airport", x: 28, y: 27 }, { name: "Pinnawala", x: 36, y: 34 }, { name: "Kandy", x: 44, y: 36 },
+      { name: "Sigiriya", x: 55, y: 17 }, { name: "Nuwara Eliya", x: 47, y: 53 }, { name: "Airport", x: 28, y: 27 },
+    ],
+  },
+  "sri-lanka-grand-highlights-7-days": {
+    label: "Grand Highlights route",
+    points: [
+      { name: "Airport", x: 28, y: 27 }, { name: "Sigiriya", x: 55, y: 17 }, { name: "Kandy", x: 44, y: 36 },
+      { name: "Nuwara Eliya", x: 47, y: 53 }, { name: "Ella", x: 58, y: 56 }, { name: "Yala", x: 69, y: 72 },
+      { name: "Mirissa", x: 42, y: 84 }, { name: "Airport", x: 28, y: 27 },
+    ],
+  },
+  "sri-lanka-coastal-cultural-odyssey-8-days": {
+    label: "Coastal & Cultural Odyssey route",
+    points: [
+      { name: "Airport", x: 28, y: 27 }, { name: "Bentota", x: 22, y: 61 }, { name: "Mirissa", x: 42, y: 84 },
+      { name: "Yala", x: 69, y: 72 }, { name: "Ella", x: 58, y: 56 }, { name: "Kandy", x: 44, y: 36 },
+      { name: "Sigiriya", x: 55, y: 17 }, { name: "Airport", x: 28, y: 27 },
+    ],
+  },
+  "sri-lanka-complete-discovery-10-days": {
+    label: "Complete Discovery route",
+    points: [
+      { name: "Airport", x: 28, y: 27 }, { name: "Sigiriya", x: 55, y: 17 }, { name: "Polonnaruwa", x: 69, y: 23 },
+      { name: "Kandy", x: 44, y: 36 }, { name: "Ella", x: 58, y: 56 }, { name: "Yala", x: 69, y: 72 },
+      { name: "Mirissa", x: 42, y: 84 }, { name: "Bentota", x: 22, y: 61 }, { name: "Airport", x: 28, y: 27 },
+    ],
+  },
+  "sri-lanka-grand-odyssey-14-days": {
+    label: "Grand Odyssey route",
+    points: [
+      { name: "Airport", x: 28, y: 27 }, { name: "Negombo", x: 24, y: 28 }, { name: "Anuradhapura", x: 41, y: 11 },
+      { name: "Sigiriya", x: 55, y: 17 }, { name: "Kandy", x: 44, y: 36 }, { name: "Ella", x: 58, y: 56 },
+      { name: "Yala", x: 69, y: 72 }, { name: "Mirissa", x: 42, y: 84 }, { name: "Galle", x: 30, y: 80 },
+      { name: "Bentota", x: 22, y: 61 }, { name: "Colombo", x: 23, y: 40 }, { name: "Airport", x: 28, y: 27 },
+    ],
+  },
+};
 
 export const pages: Record<string, SitePageData> = {
   home: {

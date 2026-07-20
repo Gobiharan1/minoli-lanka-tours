@@ -1,5 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import type { TourRoute } from "../site-content";
+import { RouteMap } from "./RouteMap";
 
 const headingStarts = [
   "About Minoli", "Your Kandy-Based", "Explore Sri Lanka", "Featured Round", "Popular Day", "Why Choose",
@@ -145,11 +147,6 @@ function Gallery() {
   );
 }
 
-function RouteVisual({ route }: { route?: string }) {
-  const stops = route?.split("→").map((stop) => stop.trim()) ?? ["Kandy", "Your chosen highlights", "Kandy"];
-  return <div className="route-visual">{stops.map((stop, index) => <div className="route-stop" key={`${stop}-${index}`}><span>{String(index + 1).padStart(2, "0")}</span><b>{stop}</b></div>)}</div>;
-}
-
 function renderBlock(block: Block, index: number): ReactNode {
   if (block.type === "list") return <ul className="content-list" key={index}>{block.items.map((item, itemIndex) => <li key={itemIndex}>{item}</li>)}</ul>;
   if (block.type === "quote") return <blockquote key={index}>{block.text}</blockquote>;
@@ -160,19 +157,25 @@ function renderBlock(block: Block, index: number): ReactNode {
   return <p key={index}>{block.text}</p>;
 }
 
-export function ContentRenderer({ raw, startAt = 0, route }: { raw: string; startAt?: number; route?: string }) {
+export function ContentRenderer({ raw, startAt = 0, routeMap }: { raw: string; startAt?: number; routeMap?: TourRoute }) {
   const sections = buildSections(raw, startAt);
+  const hasRouteSection = sections.some((section) => section.heading?.startsWith("Tour Route Map"));
   return (
     <div className="rich-content">
       {sections.map((section, index) => (
         <section className={sectionClass(section.heading)} key={`${section.heading ?? "opening"}-${index}`}>
           {section.heading && <h2>{section.heading}</h2>}
           <div className="panel-body">{section.blocks.map(renderBlock)}</div>
-          {section.heading?.startsWith("Tour Route Map") && <RouteVisual route={route} />}
+          {section.heading?.startsWith("Tour Route Map") && routeMap && <RouteMap route={routeMap} />}
           {section.heading?.startsWith("Image Gallery") && <Gallery />}
         </section>
       ))}
+      {routeMap && !hasRouteSection && (
+        <section className="content-panel route-section route-section-auto">
+          <h2>The journey at a glance</h2>
+          <RouteMap route={routeMap} />
+        </section>
+      )}
     </div>
   );
 }
-
