@@ -27,6 +27,22 @@ export type SitePageData = {
   startAt: number;
 };
 
+const designDirectionWords = /(?:layout|image|slider|carousel|grid|card|section|CTA|button|photos?|form|background|placeholder|visual recommendation)/i;
+
+function prepared(raw: string) {
+  return raw.split(/\r?\n/).map((sourceLine) => {
+    const line = sourceLine.trim();
+    if (line.startsWith("Hero Section (") || line.startsWith("Map Section (")) return "";
+    if (line.startsWith("(") && line.endsWith(")") && designDirectionWords.test(line)) return "";
+    const intro = line.match(/^(.*?)\s*\((?:Section intro text|Section intro)\)\s*(.+)$/i);
+    if (intro) return `${intro[1]}\n${intro[2]}`;
+    return line
+      .replace(/\s*\((?:Primary Button|Floating\/Secondary Button|Button|Buttons|Button linking[^)]*)\)/gi, "")
+      .replace(/\s*\(([^)]*)\)\s*$/g, (match, note: string) => designDirectionWords.test(note) ? "" : match)
+      .trim();
+  }).join("\n");
+}
+
 export const dayTours = [
   {
     slug: "kandy-city-tour",
@@ -115,7 +131,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Welcome to Sri Lanka’s Warmest Private Tour Experience",
     kicker: "Kandy-based · Private · Personal",
     intro: "Discover the Real Heart of Sri Lanka with Minoli Lanka Tours",
-    raw: home,
+    raw: prepared(home),
     image: "/images/sigiriya.jpg",
     imageAlt: "Sigiriya Rock rising above Sri Lanka’s green landscape",
     startAt: 3,
@@ -126,7 +142,7 @@ export const pages: Record<string, SitePageData> = {
     title: "About Minoli Lanka Tours",
     kicker: "Our story",
     intro: "Your Trusted Kandy-Based Partner for Authentic Sri Lanka Journeys",
-    raw: about,
+    raw: prepared(about),
     image: "/images/kandy.jpg",
     imageAlt: "Kandy landscape in Sri Lanka",
     startAt: 3,
@@ -137,7 +153,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Discover Our Sri Lanka Tour Packages",
     kicker: "Day tours & round tours",
     intro: "Private, Personalized & Filled with Warm Hospitality",
-    raw: packages,
+    raw: prepared(packages),
     image: "/images/tea-country.jpg",
     imageAlt: "Misty tea plantations in Sri Lanka’s hill country",
     startAt: 3,
@@ -148,7 +164,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Get in Touch With Us",
     kicker: "Plan your journey",
     intro: "We’re here to help plan your perfect Sri Lanka adventure. Reach out anytime — we reply fast!",
-    raw: contact,
+    raw: prepared(contact),
     image: "/images/kandy.jpg",
     imageAlt: "Scenic Kandy, home of Minoli Lanka Tours",
     startAt: 3,
@@ -159,7 +175,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Kandy City Tour",
     kicker: "Private day tour · 5–8 hours",
     intro: "Immerse Yourself in the Cultural Heart of Sri Lanka",
-    raw: kandy,
+    raw: prepared(kandy),
     image: "/images/kandy.jpg",
     imageAlt: "Temple of the Tooth in Kandy, Sri Lanka",
     startAt: 2,
@@ -170,7 +186,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Sigiriya Day Tour from Kandy | Private Adventure with Minoli Lanka Tours",
     kicker: "Private day tour · 10–12 hours",
     intro: "Discover Ancient Wonders, Rock Fortresses & Wildlife – Your Way",
-    raw: sigiriya,
+    raw: prepared(sigiriya),
     image: "/images/sigiriya.jpg",
     imageAlt: "Sigiriya Rock Fortress surrounded by forest",
     startAt: 2,
@@ -181,7 +197,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Nuwara Eliya Day Tour from Kandy | Private Hill Country Escape with Minoli Lanka Tours",
     kicker: "Private day tour · 9–11 hours",
     intro: "Experience “Little England,” Misty Tea Plantations & Cool Highland Charm",
-    raw: nuwaraEliya,
+    raw: prepared(nuwaraEliya),
     image: "/images/tea-country.jpg",
     imageAlt: "Emerald tea plantations in Sri Lanka’s highlands",
     startAt: 2,
@@ -192,7 +208,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Kitulgala Day Tour from Kandy | Private Adventure with Minoli Lanka Tours",
     kicker: "Private day tour · 8–10 hours",
     intro: "Experience Rainforest Thrills, River Adventures & Nature’s Serenity",
-    raw: kitulgala,
+    raw: prepared(kitulgala),
     image: "/images/train.jpg",
     imageAlt: "Lush green Sri Lankan highlands",
     startAt: 3,
@@ -203,7 +219,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Polonnaruwa Day Tour from Kandy | Private Ancient City Adventure with Minoli Lanka Tours",
     kicker: "Private day tour · 9–11 hours",
     intro: "Explore Sri Lanka’s Glorious Medieval Capital & UNESCO Wonders",
-    raw: polonnaruwa,
+    raw: prepared(polonnaruwa),
     image: "/images/sigiriya.jpg",
     imageAlt: "Sri Lanka’s ancient cultural triangle landscape",
     startAt: 2,
@@ -214,7 +230,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Sri Lanka Classic Highlights – 4 Days / 3 Nights",
     kicker: "Private cultural & wildlife tour",
     intro: "Discover Sri Lanka’s Iconic Wonders in Just 4 Days Experience the perfect short escape to Sri Lanka with Minoli Lanka Tours. This private tour blends unforgettable wildlife encounters at Pinnawala Elephant Orphanage, the majestic Sigiriya Rock Fortress, thrilling Minneriya Safari, sacred Kandy temples, lush botanical gardens, and scenic hill country charm in Nuwara Eliya. Ideal for first-time visitors with limited time, this well-paced itinerary offers a rich mix of culture, nature, and adventure while returning to the comfort of Kandy each night.",
-    raw: fourDay,
+    raw: prepared(fourDay),
     image: "/images/elephants.jpg",
     imageAlt: "Elephants in Sri Lanka",
     startAt: 2,
@@ -225,7 +241,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Sri Lanka Grand Highlights – 7 Days / 6 Nights",
     kicker: "Private culture, nature & beach tour",
     intro: "Experience the Best of Sri Lanka in One Unforgettable Week This private round tour with Minoli Lanka Tours takes you from ancient rock fortresses and wildlife safaris to sacred temples, misty hill country, scenic train rides, and pristine southern beaches. With comfortable pacing and Kandy, Nuwara Eliya, Ella, and Mirissa as bases, you’ll enjoy Sri Lanka’s rich culture, nature, and coastal beauty without rushing. Ideal for travelers seeking a comprehensive yet relaxed introduction to the island.",
-    raw: sevenDay,
+    raw: prepared(sevenDay),
     image: "/images/train.jpg",
     imageAlt: "Sri Lanka’s scenic hill-country train",
     startAt: 2,
@@ -236,7 +252,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Sri Lanka Coastal & Cultural Odyssey – 8 Days / 7 Nights",
     kicker: "Private coast, culture & wildlife tour",
     intro: "Discover Sri Lanka’s Beaches, Wildlife, Hill Country & Ancient Wonders This private 8-day tour with Minoli Lanka Tours offers the perfect mix of relaxation on golden beaches, thrilling wildlife safaris, misty highlands, scenic train rides, and rich cultural heritage. Starting from the southern coast and moving through Ella, Nuwara Eliya, Kandy, and Sigiriya, it’s ideal for travelers wanting a comprehensive yet relaxed Sri Lankan experience.",
-    raw: eightDay,
+    raw: prepared(eightDay),
     image: "/images/beach.jpg",
     imageAlt: "Palm-fringed beach on Sri Lanka’s southern coast",
     startAt: 2,
@@ -247,7 +263,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Sri Lanka Complete Discovery – 10 Days / 9 Nights",
     kicker: "Private comprehensive tour",
     intro: "The Ultimate 10-Day Sri Lanka Experience: Culture, Wildlife, Highlands & Beaches This private tour with Minoli Lanka Tours covers the very best of Sri Lanka — from ancient rock fortresses and sacred temples to thrilling safaris, misty tea plantations, scenic train rides, and relaxing southern beaches. With comfortable pacing and expert guidance, it’s perfect for first-time visitors wanting a full, unforgettable island adventure.",
-    raw: tenDay,
+    raw: prepared(tenDay),
     image: "/images/sigiriya.jpg",
     imageAlt: "Sigiriya Rock at sunrise",
     startAt: 2,
@@ -258,7 +274,7 @@ export const pages: Record<string, SitePageData> = {
     title: "Sri Lanka Grand Odyssey – 14 Days / 13 Nights",
     kicker: "Private grand island tour",
     intro: "The Ultimate 14-Day Sri Lanka Journey: Ancient Wonders, Wildlife, Highlands & Pristine Beaches This extensive private tour with Minoli Lanka Tours takes you through the best of Sri Lanka — from ancient cities and sacred temples to thrilling safaris, misty tea plantations, scenic train rides, and idyllic southern beaches. With comfortable pacing and expert guidance, it offers an unforgettable, in-depth exploration of the island’s culture, nature, and hospitality.",
-    raw: fourteenDay,
+    raw: prepared(fourteenDay),
     image: "/images/tea-country.jpg",
     imageAlt: "Sri Lanka’s misty tea country",
     startAt: 2,

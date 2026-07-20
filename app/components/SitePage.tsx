@@ -4,6 +4,7 @@ import type { SitePageData } from "../site-content";
 import { ContentRenderer } from "./ContentRenderer";
 import { ContactForm } from "./ContactForm";
 import { TourExplorer } from "./TourExplorer";
+import { roundTours } from "../site-content";
 
 function Hero({ page }: { page: SitePageData }) {
   if (page.kind === "home") {
@@ -38,6 +39,7 @@ function Hero({ page }: { page: SitePageData }) {
 
 export function SitePage({ page }: { page: SitePageData }) {
   const isTour = page.kind === "tour";
+  const route = roundTours.find((tour) => tour.slug === page.slug)?.route;
   return (
     <>
       <Hero page={page} />
@@ -45,7 +47,7 @@ export function SitePage({ page }: { page: SitePageData }) {
       {page.kind === "packages" && <TourExplorer compact />}
       <section className={`content-section section-pad ${isTour ? "tour-layout" : ""}`} id="tour-details">
         <div className="content-main">
-          <ContentRenderer raw={page.raw} startAt={page.startAt} />
+          <ContentRenderer raw={page.raw} startAt={page.startAt} route={route} />
         </div>
         {isTour && (
           <aside className="booking-card">
@@ -66,4 +68,3 @@ export function SitePage({ page }: { page: SitePageData }) {
     </>
   );
 }
-
