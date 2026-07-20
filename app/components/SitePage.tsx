@@ -10,6 +10,12 @@ function Hero({ page }: { page: SitePageData }) {
   if (page.kind === "home") {
     return (
       <section className="home-hero">
+        <div className="hero-slides" aria-hidden="true">
+          <figure><Image src="/images/sigiriya.jpg" alt="" fill priority sizes="100vw" /></figure>
+          <figure><Image src="/images/elephants.jpg" alt="" fill sizes="100vw" /></figure>
+          <figure><Image src="/images/beach.jpg" alt="" fill sizes="100vw" /></figure>
+        </div>
+        <span className="home-hero-shade" />
         <div className="hero-copy">
           <p className="eyebrow">{page.kicker}</p>
           <h1>{page.title}</h1>
@@ -18,10 +24,10 @@ function Hero({ page }: { page: SitePageData }) {
           <div className="button-row"><Link className="button button-gold" href="/contact">Start Planning Your Adventure <span aria-hidden="true">→</span></Link><Link className="text-link" href="/tours">Browse all experiences <span aria-hidden="true">↗</span></Link></div>
           <div className="hero-trust"><span><b>Private</b> tours only</span><span><b>24/7</b> trip support</span><span><b>Local</b> Kandy team</span></div>
         </div>
-        <div className="hero-gallery" aria-label="Sri Lanka highlights">
-          <figure className="hero-main"><Image src="/images/sigiriya.jpg" alt={page.imageAlt} fill priority sizes="(max-width: 900px) 100vw, 52vw" /><figcaption>Sigiriya · Cultural Triangle</figcaption></figure>
-          <figure><Image src="/images/elephants.jpg" alt="Elephants in Sri Lanka" fill sizes="25vw" /><figcaption>Minneriya · Wildlife</figcaption></figure>
-          <figure><Image src="/images/beach.jpg" alt="Palm-fringed Sri Lanka beach" fill sizes="25vw" /><figcaption>South Coast · Slow days</figcaption></figure>
+        <div className="hero-slide-labels" aria-label="Slideshow destinations">
+          <span>Sigiriya · Cultural Triangle</span>
+          <span>Minneriya · Wildlife</span>
+          <span>South Coast · Slow days</span>
         </div>
       </section>
     );
