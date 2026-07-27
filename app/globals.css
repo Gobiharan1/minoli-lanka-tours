@@ -412,6 +412,35 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 #day-tours,
 #round-tours { scroll-margin-top: 96px; }
 
+@media (min-width: 1280px) {
+  .site-shell:has(.home-hero) .content-section { position: relative; isolation: isolate; }
+  .site-shell:has(.home-hero) .content-section::before,
+  .site-shell:has(.home-hero) .content-section::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: clamp(10rem, 13vw, 14rem);
+    bottom: clamp(6rem, 9vw, 10rem);
+    left: clamp(1rem, 3vw, 3.5rem);
+    width: clamp(54px, 6vw, 92px);
+    pointer-events: none;
+    opacity: .28;
+    background:
+      radial-gradient(ellipse at 50% 18px, transparent 0 12px, rgba(199,134,58,.82) 13px 14px, transparent 15px) center top / 100% 54px repeat-y,
+      radial-gradient(circle at 50% 50%, rgba(199,134,58,.9) 0 2px, transparent 3px) center top / 100% 27px repeat-y,
+      linear-gradient(60deg, transparent 47%, rgba(47,96,74,.52) 48% 49%, transparent 50%) center / 36px 36px repeat-y,
+      linear-gradient(rgba(199,134,58,.52), rgba(199,134,58,.52)) center / 1px 100% no-repeat;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
+  }
+  .site-shell:has(.home-hero) .content-section::after {
+    right: clamp(1rem, 3vw, 3.5rem);
+    left: auto;
+    transform: scaleX(-1);
+  }
+  .site-shell:has(.home-hero) .content-main { position: relative; z-index: 1; }
+}
+
 @media (max-width: 1180px) {
   .page-packages .tour-card-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 380px); }
   .page-packages .tour-card { min-height: 380px; }
