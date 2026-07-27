@@ -421,19 +421,20 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
     z-index: 0;
     top: clamp(10rem, 13vw, 14rem);
     bottom: clamp(6rem, 9vw, 10rem);
-    left: clamp(1rem, 3vw, 3.5rem);
-    width: clamp(110px, 12vw, 190px);
+    left: clamp(-8rem, -6vw, -3rem);
+    width: clamp(280px, 30vw, 520px);
     pointer-events: none;
-    opacity: .32;
-    background: url('/images/sigiriya-lineart.png') center 18% / 100% auto no-repeat;
+    opacity: .18;
+    background: url('/images/sigiriya-lineart.png') center 14% / 100% auto no-repeat;
     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
     mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
   }
   .site-shell:has(.home-hero) .content-section::after {
-    right: clamp(1rem, 3vw, 3.5rem);
+    right: clamp(-8rem, -6vw, -3rem);
     left: auto;
     background-image: url('/images/moonstone-lineart.png');
-    background-position: center 58%;
+    background-position: center 56%;
+    opacity: .2;
     transform: scaleX(-1);
   }
   .site-shell:has(.home-hero) .content-main { position: relative; z-index: 1; }
