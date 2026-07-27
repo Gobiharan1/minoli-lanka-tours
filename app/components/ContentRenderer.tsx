@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 const headingStarts = [
-  "About Minoli", "Your Kandy-Based", "Explore Sri Lanka", "Featured Round", "Popular Day", "Why Choose",
+  "About Minoli", "Explore Sri Lanka", "Featured Round", "Popular Day", "Why Choose",
   "What Our Guests", "Ready to Begin", "Get Your Personalized", "Our Story", "Who We Are", "Our Vision",
   "Our Mission", "Our Values", "Meet Our Team", "Our Commitment", "Ready to Experience", "Contact Information",
   "Send Us a Message", "Why Contact Us", "Follow Us", "Day Tours from Kandy", "Our Popular", "Round Tour Packages",
@@ -168,6 +169,12 @@ function renderBlock(block: Block, index: number): ReactNode {
   if (block.type === "fact") return <div className="quick-fact" key={index}><small>{block.label}</small><strong>{block.text}</strong></div>;
   if (block.type === "offer") return <article className="content-offer" key={index}><span aria-hidden="true">✦</span><p>{block.text}</p></article>;
   if (block.type === "contact") return <article className="contact-detail" key={index}>{block.text}</article>;
+  if (block.text === "View All Round Tour Packages →") {
+    return <Link className="content-action-link" href="/tours#round-tours" key={index}>View all round tour packages <span aria-hidden="true">→</span></Link>;
+  }
+  if (block.text === "Explore All Day Tours →") {
+    return <Link className="content-action-link" href="/tours#day-tours" key={index}>Explore all day tours <span aria-hidden="true">→</span></Link>;
+  }
   return <p key={index}>{block.text}</p>;
 }
 

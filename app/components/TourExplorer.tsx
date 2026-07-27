@@ -12,7 +12,7 @@ export function TourExplorer({ compact = false }: { compact?: boolean }) {
       <div className="tour-tabs" aria-label="Tour categories">
         <span>Day tours from Kandy</span><span>Signature round tours</span>
       </div>
-      <div className="tour-card-grid">
+      <div className="tour-card-grid" id="day-tours">
         {dayTours.map((tour, index) => (
           <Link className="tour-card" href={`/${tour.slug}`} key={tour.slug}>
             <Image src={tour.image} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
@@ -22,7 +22,7 @@ export function TourExplorer({ compact = false }: { compact?: boolean }) {
           </Link>
         ))}
       </div>
-      <div className="round-section-heading">
+      <div className="round-section-heading" id="round-tours">
         <span />
         <h3>Signature round tours</h3>
         <span />

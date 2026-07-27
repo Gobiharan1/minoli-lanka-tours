@@ -548,3 +548,52 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .explore-section, .highlights-section { min-height: 680px; padding: 2rem 1.25rem; }
   .highlights-section .content-list { grid-template-columns: 1fr; }
 }
+
+/* Readable type scale and clear in-content tour navigation. */
+.hero-copy h1 { font-size: clamp(3.25rem, 6vw, 6.25rem); line-height: .9; }
+.inner-hero-copy h1 { max-width: 900px; font-size: clamp(3rem, 5.5vw, 5.6rem); line-height: .94; overflow-wrap: anywhere; }
+.section-heading h2,
+.footer-lead h2,
+.form-intro h2 { font-size: clamp(2.4rem, 4.2vw, 4.4rem); line-height: 1; }
+.content-panel h2 { font-size: clamp(2.15rem, 3.5vw, 3.7rem); line-height: 1; }
+.route-showcase-heading h3 { font-size: clamp(2.35rem, 4vw, 4.3rem); }
+.content-cta h2 { font-size: clamp(2.7rem, 5vw, 4.8rem); }
+
+.content-action-link {
+  width: fit-content;
+  margin-top: .35rem;
+  padding: .8rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  color: var(--white);
+  background: var(--forest);
+  border: 1px solid var(--forest);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  transition: transform .2s ease, background .2s ease;
+}
+.content-action-link:hover,
+.content-action-link:focus-visible {
+  transform: translateY(-2px);
+  background: var(--forest-dark);
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+#day-tours,
+#round-tours { scroll-margin-top: 96px; }
+
+@media (max-width: 760px) {
+  .hero-copy h1 { font-size: clamp(2.65rem, 11.5vw, 3.8rem); }
+  .inner-hero-copy h1 { font-size: clamp(2.65rem, 11vw, 4.1rem); }
+  .section-heading h2,
+  .footer-lead h2,
+  .form-intro h2 { font-size: clamp(2.25rem, 10vw, 3.25rem); }
+  .content-panel h2 { font-size: clamp(2rem, 9vw, 3rem); }
+  .round-copy strong,
+  .round-row:not(:first-child) .round-copy strong { font-size: clamp(1.7rem, 8vw, 2rem); }
+  .route-package-copy strong,
+  .route-package-card:not(:first-child) .route-package-copy strong { font-size: clamp(1.8rem, 8.5vw, 2.4rem); }
+}
