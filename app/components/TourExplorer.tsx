@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { dayTours, roundTours, routeMaps } from "../site-content";
-import { RouteMap } from "./RouteMap";
+import { dayTours, roundTours } from "../site-content";
 
 export function TourExplorer({ compact = false }: { compact?: boolean }) {
   return (
@@ -15,10 +14,10 @@ export function TourExplorer({ compact = false }: { compact?: boolean }) {
       </div>
       <div className="tour-card-grid" id="day-tours">
         {dayTours.map((tour, index) => (
-          <Link className={compact ? "tour-card" : `tour-card tour-card-style-${index} ${index === 0 ? "tour-card-wide" : ""}`} href={`/${tour.slug}`} key={tour.slug}>
+          <Link className={compact ? "tour-card" : `tour-card ${index === 0 ? "tour-card-wide" : ""}`} href={`/${tour.slug}`} key={tour.slug}>
             <Image src={tour.image} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
             <span className="tour-card-shade" />
-            <span className="tour-card-index">0{index + 1}</span>
+            {compact && <span className="tour-card-index">0{index + 1}</span>}
             <span className="tour-card-copy"><small>{tour.meta}</small><strong>{tour.title}</strong><span>{tour.blurb}</span><b>Explore tour ↗</b></span>
           </Link>
         ))}
@@ -42,21 +41,15 @@ export function TourExplorer({ compact = false }: { compact?: boolean }) {
           </div>
         </>
       ) : (
-        <>
-          <div className="route-showcase-heading" id="round-tours">
-            <p className="eyebrow">Animated island routes</p>
-            <h3>See the journey before you take it.</h3>
-            <p>Each private round tour traces a different rhythm through Sri Lanka—from compact cultural escapes to the complete grand circuit.</p>
-          </div>
-          <div className="route-package-grid">
-            {roundTours.map((tour, index) => (
-              <Link href={`/${tour.slug}`} className={`route-package-card route-package-${index}`} key={tour.slug}>
-                <span className="route-package-copy"><small>{tour.meta}</small><strong>{tour.title}</strong><span>{tour.blurb}</span><b>View full journey ↗</b></span>
-                <RouteMap route={routeMaps[tour.slug]} compact variant={index} />
-              </Link>
-            ))}
-          </div>
-        </>
+        <div className="round-list" id="round-tours">
+          {roundTours.map((tour, index) => (
+            <Link href={`/${tour.slug}`} className="round-row" key={tour.slug}>
+              <span className="round-number">0{index + 1}</span>
+              <span><small>{tour.meta}</small><strong>{tour.title}</strong><em>{tour.blurb}</em></span>
+              <span className="round-arrow" aria-hidden="true">↗</span>
+            </Link>
+          ))}
+        </div>
       )}
     </section>
   );
