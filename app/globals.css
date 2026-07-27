@@ -425,15 +425,24 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
     width: clamp(280px, 30vw, 520px);
     pointer-events: none;
     opacity: .18;
-    background: url('/images/sigiriya-lineart.png') center 14% / 100% auto no-repeat;
+    background-image:
+      url('/images/sigiriya-lineart.png'),
+      url('/images/temple-lineart.png');
+    background-position: center 12%, center 78%;
+    background-size: 100% auto, 100% auto;
+    background-repeat: no-repeat;
     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
     mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
   }
   .site-shell:has(.home-hero) .content-section::after {
     right: clamp(-8rem, -6vw, -3rem);
     left: auto;
-    background-image: url('/images/moonstone-lineart.png');
-    background-position: center 56%;
+    background-image:
+      url('/images/train-bridge-lineart.png'),
+      url('/images/moonstone-lineart.png');
+    background-position: center 24%, center 76%;
+    background-size: 100% auto, 100% auto;
+    background-repeat: no-repeat;
     opacity: .2;
     transform: scaleX(-1);
   }
