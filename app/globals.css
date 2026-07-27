@@ -231,9 +231,9 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .itinerary-day::after { content: ""; position: absolute; left: -2.55rem; top: 1.7rem; width: 9px; height: 9px; border-radius: 50%; background: var(--page-accent); box-shadow: 0 0 0 5px var(--ivory); }
 .itinerary-day > span { color: var(--page-accent); font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .itinerary-day p { margin: 0; }
-.rich-content { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.content-panel { grid-column: 1 / -1; }
-.inclusions-section, .exclusions-section { width: auto; display: block; grid-column: span 1; }
+.tour-layout .rich-content { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tour-layout .content-panel { grid-column: 1 / -1; }
+.tour-layout .inclusions-section, .tour-layout .exclusions-section { width: auto; display: block; grid-column: span 1; }
 .inclusions-section { background: var(--forest); color: white; margin-right: 0; }
 .inclusions-section h2 { color: white; }
 .inclusions-section .content-list li { color: #edf3ef; }
