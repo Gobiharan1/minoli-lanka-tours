@@ -48,7 +48,7 @@ export function SitePage({ page }: { page: SitePageData }) {
   const isDayTour = dayTours.some((tour) => tour.slug === page.slug);
   const route = roundTours.find((tour) => tour.slug === page.slug)?.route;
   return (
-    <>
+    <div className={`page-theme page-${page.kind} page-${page.slug}`}>
       <Hero page={page} />
       {page.kind === "home" && <TourExplorer />}
       {page.kind === "packages" && <TourExplorer compact />}
@@ -72,6 +72,6 @@ export function SitePage({ page }: { page: SitePageData }) {
           <ContactForm compact={page.kind === "home"} />
         </section>
       )}
-    </>
+    </div>
   );
 }

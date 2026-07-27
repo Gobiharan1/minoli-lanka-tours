@@ -65,7 +65,6 @@ function sectionClass(heading: string | null) {
   if (/Tour Route Map/.test(heading)) return "content-panel route-section";
   if (/Image Gallery/.test(heading)) return "content-panel gallery-section";
   if (/Contact Information/.test(heading)) return "content-panel contact-info-section";
-  if (/^Explore Sri Lanka/.test(heading)) return "content-panel explore-section";
   return "content-panel";
 }
 
@@ -205,7 +204,6 @@ export function ContentRenderer({ raw, startAt = 0, route, ensureGallery = false
           {section.heading?.startsWith("Tour Route Map") && <GoogleRouteMap route={route} />}
           {section.heading && <h2>{section.heading}</h2>}
           <div className="panel-body">{section.blocks.map(renderBlock)}</div>
-          {section.heading && /^About Minoli|^Our Story|^Our Commitment/.test(section.heading) && <StoryMosaic />}
           {section.heading?.startsWith("Tour Route Map") && <RouteVisual route={route} />}
           {section.heading?.startsWith("Image Gallery") && <Gallery />}
         </section>
