@@ -316,8 +316,13 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 
 .page-packages .inner-hero-copy h1,
 .page-tour .inner-hero-copy h1 { max-width: 900px; font-size: clamp(3rem, 5.5vw, 5.6rem); line-height: .94; overflow-wrap: anywhere; }
-.page-tour .inner-hero > img { animation: packageHeroDrift 14s ease-in-out infinite alternate; }
-@keyframes packageHeroDrift { from { transform: scale(1.04) translate3d(-.4%, 0, 0); } to { transform: scale(1.11) translate3d(.7%, -.6%, 0); } }
+.page-tour .inner-hero { overflow: hidden; isolation: isolate; }
+.page-tour .inner-hero > img { animation: none; object-position: center 38%; transform: scale(1.015); }
+.page-tour .inner-hero-shade {
+  background:
+    linear-gradient(90deg, rgba(4,29,22,.84) 0%, rgba(4,29,22,.48) 42%, rgba(4,29,22,.08) 76%, transparent 100%),
+    linear-gradient(0deg, rgba(4,29,22,.68) 0%, rgba(4,29,22,.22) 22%, transparent 40%);
+}
 
 .page-packages .tour-explorer { padding-top: clamp(5rem, 9vw, 9rem); }
 .page-packages .tour-explorer .section-heading { max-width: 920px; margin: 0 auto 2.75rem; display: block; text-align: center; }
