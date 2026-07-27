@@ -4,7 +4,7 @@ import type { SitePageData } from "../site-content";
 import { ContentRenderer } from "./ContentRenderer";
 import { ContactForm } from "./ContactForm";
 import { TourExplorer } from "./TourExplorer";
-import { roundTours } from "../site-content";
+import { dayTours, roundTours } from "../site-content";
 
 function Hero({ page }: { page: SitePageData }) {
   if (page.kind === "home") {
@@ -45,6 +45,7 @@ function Hero({ page }: { page: SitePageData }) {
 
 export function SitePage({ page }: { page: SitePageData }) {
   const isTour = page.kind === "tour";
+  const isDayTour = dayTours.some((tour) => tour.slug === page.slug);
   const route = roundTours.find((tour) => tour.slug === page.slug)?.route;
   return (
     <>
@@ -53,7 +54,7 @@ export function SitePage({ page }: { page: SitePageData }) {
       {page.kind === "packages" && <TourExplorer compact />}
       <section className={`content-section section-pad ${isTour ? "tour-layout" : ""}`} id="tour-details">
         <div className="content-main">
-          <ContentRenderer raw={page.raw} startAt={page.startAt} route={route} />
+          <ContentRenderer raw={page.raw} startAt={page.startAt} route={route} ensureGallery={isDayTour} />
         </div>
         {isTour && (
           <aside className="booking-card">

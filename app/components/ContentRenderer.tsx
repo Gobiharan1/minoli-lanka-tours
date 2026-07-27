@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 const headingStarts = [
   "About Minoli", "Explore Sri Lanka", "Featured Round", "Popular Day", "Why Choose",
@@ -159,7 +159,24 @@ function StoryMosaic() {
 
 function RouteVisual({ route }: { route?: string }) {
   const stops = route?.split("→").map((stop) => stop.trim()) ?? ["Kandy", "Your chosen highlights", "Kandy"];
-  return <div className="route-visual">{stops.map((stop, index) => <div className="route-stop" key={`${stop}-${index}`}><span>{String(index + 1).padStart(2, "0")}</span><b>{stop}</b></div>)}</div>;
+  return <div className="route-visual" style={{ "--route-columns": Math.ceil(stops.length / 2) } as CSSProperties}>{stops.map((stop, index) => <div className="route-stop" key={`${stop}-${index}`}><span>{String(index + 1).padStart(2, "0")}</span><b>{stop}</b></div>)}</div>;
+}
+
+function GoogleRouteMap({ route }: { route?: string }) {
+  const stops = route?.split("→").map((stop) => `${stop.trim()}, Sri Lanka`) ?? ["Kandy, Sri Lanka"];
+  const origin = stops[0];
+  const destination = stops.at(-1) ?? origin;
+  const waypoints = stops.slice(1, -1);
+  const embedDestination = [...waypoints, destination].join(" to:");
+  const embedUrl = `https://maps.google.com/maps?saddr=${encodeURIComponent(origin)}&daddr=${encodeURIComponent(embedDestination)}&output=embed`;
+  const mapUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}${waypoints.length ? `&waypoints=${encodeURIComponent(waypoints.join("|"))}` : ""}`;
+
+  return (
+    <div className="google-route-map">
+      <iframe src={embedUrl} title={`Google map for ${route ?? "this Sri Lanka tour"}`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+      <a href={mapUrl} target="_blank" rel="noreferrer">Open this route in Google Maps <span aria-hidden="true">↗</span></a>
+    </div>
+  );
 }
 
 function renderBlock(block: Block, index: number): ReactNode {
@@ -178,12 +195,14 @@ function renderBlock(block: Block, index: number): ReactNode {
   return <p key={index}>{block.text}</p>;
 }
 
-export function ContentRenderer({ raw, startAt = 0, route }: { raw: string; startAt?: number; route?: string }) {
+export function ContentRenderer({ raw, startAt = 0, route, ensureGallery = false }: { raw: string; startAt?: number; route?: string; ensureGallery?: boolean }) {
   const sections = buildSections(raw, startAt);
+  const hasGallery = sections.some((section) => section.heading?.startsWith("Image Gallery"));
   return (
     <div className="rich-content">
       {sections.map((section, index) => (
         <section className={sectionClass(section.heading)} key={`${section.heading ?? "opening"}-${index}`}>
+          {section.heading?.startsWith("Tour Route Map") && <GoogleRouteMap route={route} />}
           {section.heading && <h2>{section.heading}</h2>}
           <div className="panel-body">{section.blocks.map(renderBlock)}</div>
           {section.heading && /^About Minoli|^Our Story|^Our Commitment/.test(section.heading) && <StoryMosaic />}
@@ -191,6 +210,7 @@ export function ContentRenderer({ raw, startAt = 0, route }: { raw: string; star
           {section.heading?.startsWith("Image Gallery") && <Gallery />}
         </section>
       ))}
+      {ensureGallery && !hasGallery && <section className="content-panel gallery-section"><h2>Image Gallery</h2><Gallery /></section>}
     </div>
   );
 }
