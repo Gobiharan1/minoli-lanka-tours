@@ -431,7 +431,6 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
     background-position: center 12%, center 78%;
     background-size: 100% auto, 100% auto;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
     mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
   }
