@@ -55,18 +55,12 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .home-hero { height: 100vh; min-height: 720px; position: relative; display: flex; align-items: center; overflow: hidden; isolation: isolate; color: white; background: var(--forest-dark); }
 .hero-slides, .hero-slides figure, .home-hero-shade { position: absolute; inset: 0; }
 .hero-slides { z-index: -3; }
-.hero-slides figure {
-  margin: 0;
-  opacity: 0;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  animation: homeHeroSlide 18s infinite;
-  will-change: opacity;
-}
+.hero-slides figure { margin: 0; opacity: 0; animation: homeHeroSlide 18s infinite; }
 .hero-slides figure:nth-child(2) { animation-delay: 6s; }
 .hero-slides figure:nth-child(3) { animation-delay: 12s; }
+.hero-slides img { transform: scale(1.08); animation: homeHeroZoom 18s infinite; }
+.hero-slides figure:nth-child(2) img { animation-delay: 6s; }
+.hero-slides figure:nth-child(3) img { animation-delay: 12s; }
 .home-hero-shade { z-index: -2; background: linear-gradient(90deg, rgba(3,29,21,.94) 0%, rgba(3,29,21,.77) 42%, rgba(3,29,21,.27) 75%, rgba(3,29,21,.12) 100%), linear-gradient(0deg, rgba(3,29,21,.65), transparent 52%); }
 .hero-copy { width: min(920px, 73vw); padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 7vw, 7rem); display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
 .hero-copy::before { content: ""; width: 90px; height: 1px; background: var(--gold); position: absolute; top: 11%; left: 0; }
@@ -81,8 +75,9 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .hero-slide-labels span { display: flex; align-items: center; gap: .7rem; }
 .hero-slide-labels span::after { content: ""; width: 26px; height: 1px; background: rgba(255,255,255,.45); }
 @keyframes homeHeroSlide { 0%, 31% { opacity: 1; } 36%, 100% { opacity: 0; } }
+@keyframes homeHeroZoom { 0% { transform: scale(1.08); } 36% { transform: scale(1); } 100% { transform: scale(1); } }
 
-.inner-hero { min-height: 72svh; position: relative; display: flex; align-items: flex-end; padding: clamp(5rem, 12vw, 10rem) clamp(1.5rem, 7vw, 7rem) clamp(3rem, 7vw, 6rem); color: white; background: var(--forest-dark); overflow: hidden; isolation: isolate; }
+.inner-hero { min-height: 72svh; position: relative; display: flex; align-items: flex-end; padding: clamp(5rem, 12vw, 10rem) clamp(1.5rem, 7vw, 7rem) clamp(3rem, 7vw, 6rem); color: white; background: var(--forest-dark); }
 .inner-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,29,22,.9) 0%, rgba(4,29,22,.58) 48%, rgba(4,29,22,.12) 80%), linear-gradient(0deg, rgba(4,29,22,.55), transparent 50%); }
 .inner-hero-copy { position: relative; z-index: 2; max-width: 950px; }
 .inner-hero-copy h1 { max-width: 920px; font-size: clamp(3.4rem, 7vw, 7.4rem); }
@@ -258,7 +253,6 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .hero-trust { display: grid; grid-template-columns: 1fr 1fr; margin-top: 1.75rem; }
   .hero-slide-labels { display: none; }
   .inner-hero { min-height: 76svh; padding: 6rem 1.25rem 3rem; }
-  .hero-slides figure { background-attachment: scroll; }
   .inner-hero-copy h1 { font-size: clamp(3.1rem, 13.5vw, 5.4rem); }
   .hero-breadcrumb { top: 1rem; left: 1.25rem; }
   .section-pad { padding: 4.5rem 1.25rem; }
@@ -302,6 +296,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .hero-slides figure { animation: none !important; opacity: 0; }
   .hero-slides figure:first-child { opacity: 1; }
+  .hero-slides img { animation: none !important; transform: none; }
 }
 
 /* Keep the current package experience while the rest of the site stays on version 03. */
@@ -321,7 +316,8 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 
 .page-packages .inner-hero-copy h1,
 .page-tour .inner-hero-copy h1 { max-width: 900px; font-size: clamp(3rem, 5.5vw, 5.6rem); line-height: .94; overflow-wrap: anywhere; }
-.page-tour .inner-hero .hero-slides figure { background-position: center 38%; }
+.page-tour .inner-hero { overflow: hidden; isolation: isolate; }
+.page-tour .inner-hero > img { animation: none; object-position: center 38%; transform: scale(1.015); }
 .page-tour .inner-hero-shade {
   background:
     linear-gradient(90deg, rgba(4,29,22,.84) 0%, rgba(4,29,22,.48) 42%, rgba(4,29,22,.08) 76%, transparent 100%),
