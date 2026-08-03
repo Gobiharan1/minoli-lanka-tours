@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { SitePageData } from "../site-content";
 import { ContentRenderer } from "./ContentRenderer";
@@ -6,15 +5,40 @@ import { ContactForm } from "./ContactForm";
 import { TourExplorer } from "./TourExplorer";
 import { dayTours, roundTours } from "../site-content";
 
+const heroImagePool = [
+  "/images/sigiriya.jpg",
+  "/images/elephants.jpg",
+  "/images/tea-country.jpg",
+  "/images/beach.jpg",
+  "/images/train.jpg",
+  "/images/kandy.jpg",
+];
+
+function heroImagesFor(page: SitePageData) {
+  if (page.kind === "home") {
+    return ["/images/sigiriya.jpg", "/images/elephants.jpg", "/images/beach.jpg"];
+  }
+
+  const remaining = heroImagePool.filter((image) => image !== page.image);
+  const offset = [...page.slug].reduce((total, character) => total + character.charCodeAt(0), 0) % remaining.length;
+  return [page.image, remaining[offset], remaining[(offset + 2) % remaining.length]];
+}
+
+function HeroSlides({ page }: { page: SitePageData }) {
+  return (
+    <div className="hero-slides" aria-hidden="true">
+      {heroImagesFor(page).map((image) => (
+        <figure key={image} style={{ backgroundImage: `url(${image})` }} />
+      ))}
+    </div>
+  );
+}
+
 function Hero({ page }: { page: SitePageData }) {
   if (page.kind === "home") {
     return (
       <section className="home-hero">
-        <div className="hero-slides" aria-hidden="true">
-          <figure><Image src="/images/sigiriya.jpg" alt="" fill priority sizes="100vw" /></figure>
-          <figure><Image src="/images/elephants.jpg" alt="" fill sizes="100vw" /></figure>
-          <figure><Image src="/images/beach.jpg" alt="" fill sizes="100vw" /></figure>
-        </div>
+        <HeroSlides page={page} />
         <span className="home-hero-shade" />
         <div className="hero-copy">
           <p className="eyebrow">{page.kicker}</p>
@@ -35,7 +59,7 @@ function Hero({ page }: { page: SitePageData }) {
 
   return (
     <section className="inner-hero">
-      <Image src={page.image} alt={page.imageAlt} fill priority sizes="100vw" />
+      <HeroSlides page={page} />
       <span className="inner-hero-shade" />
       <div className="inner-hero-copy"><p className="eyebrow">{page.kicker}</p><h1>{page.title}</h1><p>{page.intro}</p>{page.kind === "tour" && <Link className="button button-ivory" href="#tour-details">View full itinerary <span aria-hidden="true">↓</span></Link>}</div>
       <div className="hero-breadcrumb"><Link href="/">Home</Link><span>/</span><span>{page.kind === "tour" ? "Tours" : page.title}</span></div>
