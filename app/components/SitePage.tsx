@@ -47,12 +47,15 @@ export function SitePage({ page }: { page: SitePageData }) {
   const isTour = page.kind === "tour";
   const isDayTour = dayTours.some((tour) => tour.slug === page.slug);
   const route = roundTours.find((tour) => tour.slug === page.slug)?.route;
+  const decorVariant = page.kind === "home"
+    ? 0
+    : [...page.slug].reduce((total, character) => total + character.charCodeAt(0), 0) % 3;
   const pageContent = (
     <>
       <Hero page={page} />
       {page.kind === "home" && <TourExplorer />}
       {page.kind === "packages" && <TourExplorer compact />}
-      <section className={`content-section section-pad ${isTour ? "tour-layout" : ""}`} id="tour-details">
+      <section className={`content-section section-pad ${isTour ? "tour-layout" : ""}`} id="tour-details" data-decor-variant={decorVariant}>
         <div className="content-main">
           <ContentRenderer raw={page.raw} startAt={page.startAt} route={route} ensureGallery={isDayTour} />
         </div>

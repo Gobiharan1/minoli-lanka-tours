@@ -413,9 +413,9 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 #round-tours { scroll-margin-top: 96px; }
 
 @media (min-width: 1280px) {
-  .site-shell:has(.home-hero) .content-section { position: relative; isolation: isolate; }
-  .site-shell:has(.home-hero) .content-section::before,
-  .site-shell:has(.home-hero) .content-section::after {
+  .content-section[data-decor-variant] { position: relative; isolation: isolate; }
+  .content-section[data-decor-variant]::before,
+  .content-section[data-decor-variant]::after {
     content: "";
     position: absolute;
     z-index: 0;
@@ -431,10 +431,11 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
     background-position: center 12%, center 78%;
     background-size: 100% auto, 100% auto;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
     mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
   }
-  .site-shell:has(.home-hero) .content-section::after {
+  .content-section[data-decor-variant]::after {
     right: clamp(-8rem, -6vw, -3rem);
     left: auto;
     background-image:
@@ -446,7 +447,31 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
     opacity: .2;
     transform: scaleX(-1);
   }
-  .site-shell:has(.home-hero) .content-main { position: relative; z-index: 1; }
+  .content-section[data-decor-variant="1"]::before {
+    background-image:
+      url('/images/temple-lineart.png'),
+      url('/images/train-bridge-lineart.png');
+    background-position: center 20%, center 82%;
+  }
+  .content-section[data-decor-variant="1"]::after {
+    background-image:
+      url('/images/moonstone-lineart.png'),
+      url('/images/sigiriya-lineart.png');
+    background-position: center 14%, center 74%;
+  }
+  .content-section[data-decor-variant="2"]::before {
+    background-image:
+      url('/images/train-bridge-lineart.png'),
+      url('/images/moonstone-lineart.png');
+    background-position: center 16%, center 72%;
+  }
+  .content-section[data-decor-variant="2"]::after {
+    background-image:
+      url('/images/sigiriya-lineart.png'),
+      url('/images/temple-lineart.png');
+    background-position: center 28%, center 84%;
+  }
+  .content-section[data-decor-variant] > * { position: relative; z-index: 1; }
 }
 
 @media (max-width: 1180px) {
