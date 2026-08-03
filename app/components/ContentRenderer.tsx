@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
+import { ContactForm } from "./ContactForm";
 
 const headingStarts = [
   "About Minoli", "Explore Sri Lanka", "Featured Round", "Popular Day", "Why Choose",
@@ -65,6 +66,7 @@ function sectionClass(heading: string | null) {
   if (/Tour Route Map/.test(heading)) return "content-panel route-section";
   if (/Image Gallery/.test(heading)) return "content-panel gallery-section";
   if (/Contact Information/.test(heading)) return "content-panel contact-info-section";
+  if (/^Contact Form/.test(heading)) return "content-panel contact-form-section";
   return "content-panel";
 }
 
@@ -203,7 +205,9 @@ export function ContentRenderer({ raw, startAt = 0, route, ensureGallery = false
         <section className={sectionClass(section.heading)} key={`${section.heading ?? "opening"}-${index}`}>
           {section.heading?.startsWith("Tour Route Map") && <GoogleRouteMap route={route} />}
           {section.heading && <h2>{section.heading}</h2>}
-          <div className="panel-body">{section.blocks.map(renderBlock)}</div>
+          {section.heading?.startsWith("Contact Form")
+            ? <ContactForm />
+            : <div className="panel-body">{section.blocks.map(renderBlock)}</div>}
           {section.heading?.startsWith("Tour Route Map") && <RouteVisual route={route} />}
           {section.heading?.startsWith("Image Gallery") && <Gallery />}
         </section>

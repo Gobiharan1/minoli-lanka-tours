@@ -207,7 +207,13 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .inquiry-form input, .inquiry-form select, .inquiry-form textarea { width: 100%; padding: .85rem 0; border: 0; border-bottom: 1px solid rgba(18,58,46,.28); background: transparent; color: var(--ink); outline: none; text-transform: none; letter-spacing: 0; border-radius: 0; }
 .inquiry-form textarea { border: 1px solid rgba(18,58,46,.2); padding: 1rem; resize: vertical; }
 .inquiry-form input:focus, .inquiry-form select:focus, .inquiry-form textarea:focus { border-color: var(--gold); box-shadow: 0 1px 0 var(--gold); }
+.inquiry-form [aria-invalid="true"] { border-color: #a23b32; box-shadow: 0 1px 0 #a23b32; }
+.field-error { color: #96342c; font-size: .72rem; font-weight: 700; letter-spacing: 0; text-transform: none; }
+.form-error-summary { margin: 0 0 1.5rem; padding: .85rem 1rem; color: #7c2d27; background: #f8e5e1; border-left: 3px solid #a23b32; font-weight: 700; }
 .form-note { color: var(--leaf); font-weight: 700; }
+.contact-form-section { padding: 0; background: transparent; border: 0; overflow: visible; }
+.contact-form-section > h2 { padding-inline: clamp(1rem, 3vw, 2.5rem); }
+.contact-form-section .inquiry-form { margin-top: .5rem; }
 
 .site-footer { background: var(--forest-dark); color: white; padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6.5rem) 2rem; }
 .footer-lead { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,.14); }

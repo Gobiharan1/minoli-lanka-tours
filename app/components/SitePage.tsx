@@ -69,7 +69,7 @@ export function SitePage({ page }: { page: SitePageData }) {
           </aside>
         )}
       </section>
-      {(page.kind === "contact" || page.kind === "home") && (
+      {page.kind === "home" && (
         <section className="form-section section-pad" id="inquiry">
           <div className="form-intro"><p className="eyebrow">Personal itinerary & quote</p><h2>Tell us about your Sri Lanka plans.</h2><p>We love hearing from you! Fill out the form and your email app will open with everything ready to send to our friendly Kandy team.</p><div className="contact-chip"><span>✉</span><a href="mailto:info@minolilankatours.com">info@minolilankatours.com</a></div></div>
           <ContactForm compact={page.kind === "home"} />
