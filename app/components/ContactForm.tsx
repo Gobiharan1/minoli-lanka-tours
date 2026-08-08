@@ -2,14 +2,14 @@
 
 import { ChangeEvent, FormEvent, useState } from "react";
 
-type FormErrors = Partial<Record<"name" | "email" | "phone" | "travelers" | "tourType" | "message", string>>;
+type FormErrors = Partial<Record<"name" | "email" | "phone" | "travelers" | "tourType" | "interests" | "message", string>>;
 
 export function ContactForm({ compact = false }: { compact?: boolean }) {
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
 
   function clearFieldError(event: ChangeEvent<HTMLFormElement>) {
-    const field = event.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+    const field = event.target as unknown as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
     if (!field.name || !errors[field.name as keyof FormErrors]) return;
     setErrors((current) => ({ ...current, [field.name]: undefined }));
   }
@@ -22,14 +22,16 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     const phone = String(form.get("phone") || "").trim();
     const travelers = String(form.get("travelers") || "").trim();
     const tourType = String(form.get("tourType") || "");
+    const interests = String(form.get("interests") || "").trim();
     const message = String(form.get("message") || "").trim();
     const nextErrors: FormErrors = {};
 
     if (name.length < 2) nextErrors.name = "Please enter your full name.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = "Please enter a valid email address.";
-    if (phone && phone.replace(/\D/g, "").length < 7) nextErrors.phone = "Please enter a valid phone or WhatsApp number.";
+    if (!compact && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = "Please enter a valid email address.";
+    if (!compact && phone && phone.replace(/\D/g, "").length < 7) nextErrors.phone = "Please enter a valid phone or WhatsApp number.";
     if (travelers && (!/^\d+$/.test(travelers) || Number(travelers) < 1 || Number(travelers) > 50)) nextErrors.travelers = "Please enter between 1 and 50 travelers.";
-    if (!tourType) nextErrors.tourType = "Please select a tour type.";
+    if (!compact && !tourType) nextErrors.tourType = "Please select a tour type.";
+    if (compact && interests.length < 2) nextErrors.interests = "Please share at least one travel interest.";
     if (message.length < 10) nextErrors.message = "Please tell us a little more about your travel plans.";
 
     if (Object.keys(nextErrors).length) {
@@ -50,6 +52,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
         `Travel Dates: ${form.get("dates") || ""}`,
         `Number of Travelers: ${form.get("travelers") || ""}`,
         `Type of Tour Interested In: ${form.get("tourType") || ""}`,
+        `Interests: ${form.get("interests") || ""}`,
         "",
         String(form.get("message") || ""),
       ].join("\n"),
@@ -61,7 +64,27 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
   return (
     <form className={`inquiry-form ${compact ? "compact" : ""}`} onSubmit={submit} onChange={clearFieldError} noValidate>
       {Object.keys(errors).length > 0 && <p className="form-error-summary" role="alert">Please check the highlighted fields and try again.</p>}
-      <div className="form-grid">
+      {compact ? <div className="form-grid">
+        <label>
+          Name *
+          <input name="name" autoComplete="name" maxLength={100} required aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} />
+          {errors.name && <span className="field-error" id="name-error">{errors.name}</span>}
+        </label>
+        <label>
+          Travel Dates
+          <input name="dates" maxLength={100} placeholder="e.g. 12–22 December" />
+        </label>
+        <label>
+          Number of Travelers
+          <input name="travelers" type="number" min="1" max="50" inputMode="numeric" aria-invalid={Boolean(errors.travelers)} aria-describedby={errors.travelers ? "travelers-error" : undefined} />
+          {errors.travelers && <span className="field-error" id="travelers-error">{errors.travelers}</span>}
+        </label>
+        <label>
+          Interests *
+          <input name="interests" maxLength={200} placeholder="Culture, wildlife, beaches…" required aria-invalid={Boolean(errors.interests)} aria-describedby={errors.interests ? "interests-error" : undefined} />
+          {errors.interests && <span className="field-error" id="interests-error">{errors.interests}</span>}
+        </label>
+      </div> : <div className="form-grid">
         <label>
           Full Name *
           <input name="name" autoComplete="name" maxLength={100} required aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} />
@@ -97,7 +120,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
           </select>
           {errors.tourType && <span className="field-error" id="tour-type-error">{errors.tourType}</span>}
         </label>
-      </div>
+      </div>}
       <label>
         Your Message / Special Requests *
         <textarea name="message" rows={compact ? 4 : 6} minLength={10} maxLength={2000} required aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-error" : undefined} />

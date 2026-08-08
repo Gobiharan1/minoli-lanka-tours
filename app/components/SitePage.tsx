@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { SitePageData } from "../site-content";
 import { ContentRenderer } from "./ContentRenderer";
-import { ContactForm } from "./ContactForm";
 import { TourExplorer } from "./TourExplorer";
+import { HomeSections } from "./HomeSections";
 import { dayTours, roundTours } from "../site-content";
 
 function Hero({ page }: { page: SitePageData }) {
@@ -20,7 +20,7 @@ function Hero({ page }: { page: SitePageData }) {
           <p className="eyebrow">{page.kicker}</p>
           <h1>{page.title}</h1>
           <p className="hero-intro">{page.intro}</p>
-          <p>Immerse yourself in the breathtaking beauty, rich culture, and warm hospitality of Sri Lanka.</p>
+          <p>Immerse yourself in the breathtaking beauty, rich culture, and warm hospitality of Sri Lanka. As a trusted Kandy-based inbound tour operator, we specialize in private, personalized journeys that adapt to your pace, preferences, and dreams. Whether you seek ancient wonders, thrilling wildlife safaris, scenic hill country escapes, or relaxing beach getaways, our caring team ensures every moment feels safe, comfortable, and truly special.</p>
           <div className="button-row"><Link className="button button-gold" href="/contact">Start Planning Your Adventure <span aria-hidden="true">→</span></Link><Link className="text-link" href="/tours">Browse all experiences <span aria-hidden="true">↗</span></Link></div>
           <div className="hero-trust"><span><b>Private</b> tours only</span><span><b>24/7</b> trip support</span><span><b>Local</b> Kandy team</span></div>
         </div>
@@ -53,9 +53,9 @@ export function SitePage({ page }: { page: SitePageData }) {
   const pageContent = (
     <>
       <Hero page={page} />
-      {page.kind === "home" && <TourExplorer />}
+      {page.kind === "home" && <HomeSections />}
       {page.kind === "packages" && <TourExplorer compact />}
-      <section className={`content-section section-pad ${isTour ? "tour-layout" : ""}`} id="tour-details" data-decor-variant={decorVariant}>
+      {page.kind !== "home" && <section className={`content-section section-pad ${isTour ? "tour-layout" : ""}`} id="tour-details" data-decor-variant={decorVariant}>
         <div className="content-main">
           <ContentRenderer raw={page.raw} startAt={page.startAt} route={route} ensureGallery={isDayTour} />
         </div>
@@ -68,13 +68,7 @@ export function SitePage({ page }: { page: SitePageData }) {
             <span className="booking-note">Kandy-based · English-speaking driver-guide · Flexible pacing</span>
           </aside>
         )}
-      </section>
-      {page.kind === "home" && (
-        <section className="form-section section-pad" id="inquiry">
-          <div className="form-intro"><p className="eyebrow">Personal itinerary & quote</p><h2>Tell us about your Sri Lanka plans.</h2><p>We love hearing from you! Fill out the form and your email app will open with everything ready to send to our friendly Kandy team.</p><div className="contact-chip"><span>✉</span><a href="mailto:info@minolilankatours.com">info@minolilankatours.com</a></div></div>
-          <ContactForm compact={page.kind === "home"} />
-        </section>
-      )}
+      </section>}
     </>
   );
 

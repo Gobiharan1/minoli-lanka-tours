@@ -196,6 +196,54 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .booking-card .button { width: 100%; margin: 1rem 0; }
 .booking-note { display: block; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.2); color: #bfcac5; font-size: .68rem; line-height: 1.6; }
 
+.home-about { display: grid; grid-template-columns: minmax(300px, .9fr) minmax(360px, 1.1fr); gap: clamp(3rem, 8vw, 8rem); align-items: center; background: var(--ivory); }
+.home-about-image { min-height: 600px; position: relative; box-shadow: -18px 18px 0 var(--sand); overflow: hidden; }
+.home-section-copy h2, .home-explore h2, .home-final-cta h2 { margin: 0; font: 600 clamp(2.4rem, 4.2vw, 4.5rem)/.98 var(--font-display), Georgia, serif; letter-spacing: -.035em; }
+.home-section-copy > p:not(.eyebrow) { color: var(--muted); }
+.home-section-copy .text-link { display: inline-flex; margin-top: 1.2rem; }
+.home-explore { text-align: center; background: var(--white); }
+.home-explore h2 { max-width: 900px; margin-inline: auto; color: var(--forest); }
+.home-explore > p:not(.eyebrow) { max-width: 900px; margin: 1.5rem auto 0; color: var(--muted); }
+.home-explore .button-row { justify-content: center; }
+.home-tours { background: #e8eddf; }
+.home-day-tours { background: var(--white); }
+.home-card-grid { display: grid; gap: 1.25rem; }
+.home-round-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.home-day-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.home-tour-card { min-width: 0; display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line); box-shadow: 0 16px 36px rgba(18,58,46,.07); transition: transform .25s ease, box-shadow .25s ease; }
+.home-tour-card:hover, .home-tour-card:focus-visible { transform: translateY(-6px); box-shadow: 0 24px 46px rgba(18,58,46,.14); }
+.home-tour-image { position: relative; min-height: 250px; overflow: hidden; }
+.home-tour-image img { transition: transform .65s ease; }
+.home-tour-card:hover .home-tour-image img { transform: scale(1.045); }
+.home-tour-card-copy { padding: 1.5rem; display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: .65rem; }
+.home-tour-card-copy small { color: var(--gold); font-size: .64rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.home-tour-card-copy strong { color: var(--forest); font: 600 1.65rem/1.05 var(--font-display), serif; }
+.home-tour-card-copy > span { color: var(--muted); font-size: .8rem; line-height: 1.55; }
+.home-tour-card-copy b { margin-top: auto; padding-top: .6rem; color: var(--forest); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
+.home-day-card .home-tour-image { min-height: 190px; }
+.home-day-card .home-tour-card-copy { padding: 1.25rem; }
+.home-day-card .home-tour-card-copy strong { font-size: 1.35rem; }
+.home-tours .content-action-link, .home-day-tours .content-action-link { margin-top: 2rem; }
+.home-why { background: var(--forest); color: white; }
+.home-why .section-heading h2 { color: white; }
+.home-why .section-heading > p { color: #c4d0ca; }
+.reason-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.16); }
+.reason-grid article { min-height: 230px; padding: 1.6rem; background: var(--forest); }
+.reason-grid span { color: var(--gold-light); font-size: .65rem; font-weight: 800; letter-spacing: .12em; }
+.reason-grid h3 { margin: 2rem 0 .75rem; color: white; font: 600 1.45rem/1.05 var(--font-display), serif; }
+.reason-grid p { margin: 0; color: #c7d2cd; font-size: .82rem; }
+.home-testimonials { background: var(--sand); }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.testimonial-grid blockquote { margin: 0; min-height: 320px; padding: 2rem; display: flex; flex-direction: column; background: var(--white); border-top: 3px solid var(--gold); }
+.testimonial-grid blockquote > span { color: var(--gold); font: 600 4rem/.7 var(--font-display), serif; }
+.testimonial-grid blockquote p { color: var(--forest); font: 600 1.25rem/1.45 var(--font-display), serif; }
+.testimonial-grid cite { margin-top: auto; color: var(--muted); font-size: .68rem; font-style: normal; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.home-final-cta { min-height: 600px; display: flex; align-items: flex-end; color: white; background: linear-gradient(90deg, rgba(5,35,26,.92), rgba(5,35,26,.24)), url('/images/beach.jpg') center 54%/cover; }
+.home-final-cta > div { max-width: 850px; }
+.home-final-cta h2 { color: white; }
+.home-final-cta p:not(.eyebrow) { max-width: 720px; color: #eee8dd; }
+.home-final-cta .text-link { color: white; border-color: rgba(255,255,255,.7); }
+
 .form-section { background: var(--sand); display: grid; grid-template-columns: minmax(260px, .75fr) minmax(420px, 1.25fr); gap: clamp(3rem, 8vw, 8rem); align-items: start; }
 .form-intro { position: sticky; top: 2rem; }
 .form-intro > p:not(.eyebrow) { max-width: 460px; color: var(--muted); }
@@ -243,6 +291,9 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .story-section { grid-template-columns: minmax(210px, .7fr) minmax(0, 1.3fr); }
   .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
   .footer-grid > div:last-child { grid-column: 2 / -1; }
+  .home-round-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-day-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .reason-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
@@ -258,6 +309,12 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .hero-copy .button-row { margin-top: 1.35rem; }
   .hero-trust { display: grid; grid-template-columns: 1fr 1fr; margin-top: 1.75rem; }
   .hero-slide-labels { display: none; }
+  .home-about { grid-template-columns: 1fr; }
+  .home-about-image { min-height: 420px; }
+  .home-round-grid, .home-day-grid, .reason-grid, .testimonial-grid { grid-template-columns: 1fr; }
+  .home-tour-image, .home-day-card .home-tour-image { min-height: 240px; }
+  .reason-grid article { min-height: auto; }
+  .home-final-cta { min-height: 560px; }
   .inner-hero { min-height: 76svh; padding: 6rem 1.25rem 3rem; }
   .inner-hero-copy h1 { font-size: clamp(2.7rem, 11vw, 4.1rem); }
   .hero-breadcrumb { top: 1rem; left: 1.25rem; }
