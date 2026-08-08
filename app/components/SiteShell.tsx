@@ -49,7 +49,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="footer-bottom"><span>© 2026 Minoli Lanka Tours</span><span>Made with care in Kandy</span></div>
       </footer>
       <a className="whatsapp-float" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Message Minoli Lanka Tours on WhatsApp" title="WhatsApp us">
-        <span aria-hidden="true">✆</span>
+        <span className="whatsapp-logo" aria-hidden="true" />
       </a>
     </div>
   );
