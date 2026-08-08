@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { dayTours, roundTours } from "../site-content";
-import { emailAddress, emailHref, phoneDisplay, phoneHref, whatsappUrl } from "../contact-details";
+import { whatsappUrl } from "../contact-details";
+import { GuestMoments } from "./GuestMoments";
+
+const tourGuestPhotos = ["09", "15", "19", "20", "21", "22", "28"].map((name) => `/images/guest-moments/${name}.jpeg`);
 
 const dayTourDetails: Record<string, string> = {
   "kandy-city-tour": "Immerse yourself in Sri Lanka’s cultural capital. Visit the sacred Temple of the Tooth Relic (UNESCO), stroll around scenic Kandy Lake, admire panoramic views from Bahirawakanda Big Buddha, explore the magnificent Royal Botanical Gardens in Peradeniya, and end with a vibrant Kandyan Cultural Dance Show. Customizable with tea tasting or craft workshops.",
@@ -37,13 +40,7 @@ const planningSteps = [
 export function TourPackagesSections() {
   return (
     <>
-      <section className="package-intro section-pad" id="day-tours">
-        <p className="eyebrow">Private full-day experiences</p>
-        <h2>Day Tours from Kandy</h2>
-        <p>Enjoy convenient, full-day adventures starting and ending in Kandy. Perfect for travelers wanting rich experiences without changing hotels. All tours include private air-conditioned vehicle, experienced English-speaking driver-guide, bottled water, and hotel pickup/drop-off.</p>
-      </section>
-
-      <section className="package-day-section section-pad">
+      <section className="package-day-section section-pad" id="day-tours">
         <div className="section-heading"><div><p className="eyebrow">Five unforgettable directions</p><h2>Our Popular Day Tours</h2></div><p>Choose a ready-made experience or ask us to adjust the route, pace and activities around you.</p></div>
         <div className="package-day-grid">
           {dayTours.map((tour) => (
@@ -71,6 +68,8 @@ export function TourPackagesSections() {
         <Link className="button button-gold" href="#round-tours">View all round tours</Link>
       </section>
 
+      <GuestMoments eyebrow="Travel together" title="Welcomes, Adventures & Farewells" intro="From airport greetings to mountain viewpoints, our guests are supported with thoughtful local care throughout their Sri Lanka journey." images={tourGuestPhotos} variant="light" />
+
       <section className="package-tailor section-pad">
         <div className="package-tailor-image"><Image src="/images/tea-country.jpg" alt="Sri Lanka’s green hill country, ready for a tailor-made journey" fill sizes="(max-width: 760px) 100vw, 42vw" /></div>
         <div className="package-tailor-copy">
@@ -85,8 +84,9 @@ export function TourPackagesSections() {
       <section className="package-why section-pad">
         <div><p className="eyebrow">Travel with confidence</p><h2>Why Book With Us?</h2></div>
         <ul><li>Private tours only — no groups</li><li>Kandy-based local team</li><li>Flexible &amp; transparent pricing</li><li>24/7 support during your trip</li><li>Responsible tourism practices</li></ul>
-        <div className="package-why-cta"><h3>Ready to Explore Sri Lanka?</h3><p>Contact Minoli Lanka Tours today for availability, pricing, or to start planning your perfect trip.</p><div className="button-row"><a className="button button-gold" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp us <span aria-hidden="true">↗</span></a><a className="text-link" href={phoneHref}>{phoneDisplay}</a><a className="text-link" href={emailHref}>{emailAddress}</a></div></div>
+        <div className="package-why-cta"><h3>Ready to Explore Sri Lanka?</h3><p>Contact Minoli Lanka Tours today for availability, pricing, or to start planning your perfect trip.</p><div className="button-row"><a className="button button-gold" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp us <span aria-hidden="true">↗</span></a></div></div>
       </section>
+      <div className="package-footer-gap" aria-hidden="true" />
     </>
   );
 }

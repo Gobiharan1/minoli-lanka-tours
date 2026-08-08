@@ -3,6 +3,9 @@ import Link from "next/link";
 import { dayTours, roundTours } from "../site-content";
 import { emailAddress, emailHref, phoneDisplay, phoneHref } from "../contact-details";
 import { ContactForm } from "./ContactForm";
+import { GuestMoments } from "./GuestMoments";
+
+const homeGuestPhotos = ["03", "08", "10", "11", "18", "25"].map((name) => `/images/guest-moments/${name}.jpeg`);
 
 const reasons = [
   ["Genuine Warm Hospitality", "Feel truly cared for by a team that treats you like family."],
@@ -85,12 +88,14 @@ export function HomeSections() {
         <div className="testimonial-grid">{testimonials.map(([quote, guest]) => <blockquote key={guest}><span aria-hidden="true">“</span><p>{quote}</p><cite>{guest}</cite></blockquote>)}</div>
       </section>
 
+      <GuestMoments eyebrow="Real journeys · Real smiles" title="Moments Shared With Our Guests" intro="Warm welcomes, local discoveries and relaxed days on the road — a glimpse of the personal care behind every Minoli Lanka Tours journey." images={homeGuestPhotos} variant="ivory" />
+
       <section className="home-final-cta section-pad">
-        <div><p className="eyebrow">Your island story starts here</p><h2>Ready to Begin Your Sri Lanka Adventure?</h2><p>Let Minoli Lanka Tours create a private journey filled with wonder, comfort, and lasting memories. Share your travel dates, interests, and preferences — we’ll handle the rest with care.</p><div className="button-row"><Link className="button button-gold" href="#inquiry">Contact us now <span aria-hidden="true">→</span></Link><a className="text-link" href={phoneHref}>Call {phoneDisplay}</a><a className="text-link" href={emailHref}>Email our team</a></div></div>
+        <div><p className="eyebrow">Your island story starts here</p><h2>Ready to Begin Your Sri Lanka Adventure?</h2><p>Let Minoli Lanka Tours create a private journey filled with wonder, comfort, and lasting memories. Share your travel dates, interests, and preferences — we’ll handle the rest with care.</p><div className="button-row"><Link className="button button-gold" href="#inquiry">Contact us now <span aria-hidden="true">→</span></Link></div></div>
       </section>
 
       <section className="form-section section-pad" id="inquiry">
-        <div className="form-intro"><p className="eyebrow">Personal itinerary & quote</p><h2>Get Your Personalized Itinerary &amp; Quote</h2><p>Tell us when you plan to travel, who is joining you and what you would love to experience. Our friendly Kandy team will shape a private itinerary around you.</p><div className="contact-chip"><span>✉</span><a href={emailHref}>{emailAddress}</a></div><div className="contact-chip"><span>☎</span><a href={phoneHref}>{phoneDisplay} · Call / WhatsApp</a></div></div>
+        <div className="form-intro"><p className="eyebrow">Personal itinerary & quote</p><h2>Get Your Personalized Itinerary &amp; Quote</h2><p>Tell us when you plan to travel, who is joining you and what you would love to experience. Our friendly Kandy team will shape a private itinerary around you.</p><div className="contact-stack"><div className="contact-chip"><span>✉</span><a href={emailHref}>{emailAddress}</a></div><div className="contact-chip"><span>☎</span><a href={phoneHref}>{phoneDisplay} · Call / WhatsApp</a></div></div></div>
         <ContactForm compact />
       </section>
     </>

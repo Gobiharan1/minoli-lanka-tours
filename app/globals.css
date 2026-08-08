@@ -220,6 +220,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .home-tour-card:hover .home-tour-image img { transform: scale(1.045); }
 .home-tour-card-copy { padding: 1.5rem; display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: .65rem; }
 .home-tour-card-copy small { color: var(--gold); font-size: .64rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.home-round-grid .home-tour-card-copy small { width: fit-content; padding: .45rem .7rem; color: var(--forest-dark); background: var(--gold-light); border-radius: 999px; box-shadow: 0 7px 18px rgba(8,40,31,.14); }
 .home-tour-card-copy strong { color: var(--forest); font: 600 1.65rem/1.05 var(--font-display), serif; }
 .home-tour-card-copy > span { color: var(--muted); font-size: .8rem; line-height: 1.55; }
 .home-tour-card-copy b { margin-top: auto; padding-top: .6rem; color: var(--forest); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
@@ -252,6 +253,21 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .form-intro > p:not(.eyebrow) { max-width: 460px; color: var(--muted); }
 .contact-chip { margin-top: 2rem; display: inline-flex; align-items: center; gap: .7rem; color: var(--forest); font-weight: 800; }
 .contact-chip > span { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(18,58,46,.3); border-radius: 50%; }
+.contact-stack { margin-top: 2rem; display: grid; justify-items: start; gap: .85rem; }
+.contact-stack .contact-chip { margin-top: 0; }
+
+.guest-moments { background: var(--white); }
+.guest-moments-ivory { background: var(--ivory); }
+.guest-moments-forest { color: white; background: var(--forest); }
+.guest-moments .section-heading h2 { margin: 0; font: 600 clamp(2.4rem, 4vw, 4.3rem)/.98 var(--font-display), Georgia, serif; letter-spacing: -.035em; }
+.guest-moments-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: 115px; gap: .8rem; }
+.guest-moments-grid figure { grid-column: span 3; grid-row: span 3; margin: 0; position: relative; overflow: hidden; background: var(--sand); }
+.guest-moments-grid figure:nth-child(1), .guest-moments-grid figure:nth-child(6) { grid-column: span 5; }
+.guest-moments-grid figure:nth-child(2), .guest-moments-grid figure:nth-child(5) { grid-column: span 4; grid-row: span 2; }
+.guest-moments-grid figure:nth-child(3), .guest-moments-grid figure:nth-child(4) { grid-column: span 3; }
+.guest-moments-grid figure:nth-child(7) { grid-column: span 7; }
+.guest-moments-grid img { transition: transform .6s ease; }
+.guest-moments-grid figure:hover img { transform: scale(1.035); }
 .inquiry-form { padding: clamp(1.5rem, 4vw, 3rem); background: var(--white); border: 1px solid rgba(18,58,46,.1); box-shadow: 0 24px 60px rgba(31,52,43,.08); }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 .inquiry-form label { display: grid; gap: .45rem; margin-bottom: 1.2rem; color: var(--forest); font-size: .7rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
@@ -452,6 +468,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .package-why-cta h3 { margin: 0; color: white; font: 600 clamp(2rem, 3vw, 3rem)/1 var(--font-display), serif; }
 .package-why-cta p { color: #c4d0ca; }
 .package-why .text-link { color: white; border-color: rgba(255,255,255,.65); }
+.package-footer-gap { height: clamp(3rem, 6vw, 6rem); background: var(--white); }
 @media (max-width: 1100px) {
   .package-day-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .package-day-card, .package-day-card:nth-child(4), .package-day-card:nth-child(5) { grid-column: span 1; }
@@ -468,6 +485,9 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .package-tailor-image { min-height: 480px; }
   .package-why > ul { grid-template-columns: 1fr; }
   .package-why > ul li { min-height: 110px; }
+  .guest-moments-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 190px; gap: .6rem; }
+  .guest-moments-grid figure, .guest-moments-grid figure:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+  .guest-moments-grid figure:first-child { grid-column: 1 / -1; grid-row: span 2; }
 }
 .page-tour .inner-hero { overflow: hidden; isolation: isolate; }
 .page-tour .inner-hero > img { animation: none; object-position: center 38%; transform: scale(1.015); }

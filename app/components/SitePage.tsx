@@ -4,8 +4,11 @@ import type { SitePageData } from "../site-content";
 import { ContentRenderer } from "./ContentRenderer";
 import { HomeSections } from "./HomeSections";
 import { TourPackagesSections } from "./TourPackagesSections";
+import { GuestMoments } from "./GuestMoments";
 import { dayTours, roundTours } from "../site-content";
 import { whatsappUrl } from "../contact-details";
+
+const aboutGuestPhotos = ["04", "05", "06", "07", "17", "23"].map((name) => `/images/guest-moments/${name}.jpeg`);
 
 function Hero({ page }: { page: SitePageData }) {
   if (page.kind === "home") {
@@ -67,6 +70,7 @@ export function SitePage({ page }: { page: SitePageData }) {
           </aside>
         )}
       </section>}
+      {page.slug === "about" && <GuestMoments eyebrow="Hospitality in action" title="More Than a Tour — A Personal Welcome" intro="The people, conversations and thoughtful details are what make a private journey memorable. These are real moments shared with guests across Sri Lanka." images={aboutGuestPhotos} variant="light" />}
     </>
   );
 
