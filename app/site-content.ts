@@ -233,7 +233,7 @@ export const pages: Record<string, SitePageData> = {
     kind: "packages",
     title: "Discover Our Sri Lanka Tour Packages",
     kicker: "Day tours & round tours",
-    intro: "Private, Personalized & Filled with Warm Hospitality",
+    intro: "Private, Personalized & Filled with Warm Hospitality. Explore Sri Lanka your way with Minoli Lanka Tours. Choose from our carefully crafted Day Tours based in Kandy or our signature Round Tour Packages that take you across the island’s most breathtaking destinations. Every journey is private, flexible, and designed with your comfort, safety, and interests in mind.",
     raw: prepared(packages),
     image: "/images/tea-country.jpg",
     imageAlt: "Misty tea plantations in Sri Lanka’s hill country",

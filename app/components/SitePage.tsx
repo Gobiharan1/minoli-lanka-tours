@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { SitePageData } from "../site-content";
 import { ContentRenderer } from "./ContentRenderer";
-import { TourExplorer } from "./TourExplorer";
 import { HomeSections } from "./HomeSections";
+import { TourPackagesSections } from "./TourPackagesSections";
 import { dayTours, roundTours } from "../site-content";
 import { whatsappUrl } from "../contact-details";
 
@@ -37,7 +37,7 @@ function Hero({ page }: { page: SitePageData }) {
     <section className="inner-hero">
       <Image src={page.image} alt={page.imageAlt} fill priority sizes="100vw" />
       <span className="inner-hero-shade" />
-      <div className="inner-hero-copy"><p className="eyebrow">{page.kicker}</p><h1>{page.title}</h1><p>{page.intro}</p>{page.kind === "tour" && <Link className="button button-ivory" href="#tour-details">View full itinerary <span aria-hidden="true">↓</span></Link>}</div>
+      <div className="inner-hero-copy"><p className="eyebrow">{page.kicker}</p><h1>{page.title}</h1><p>{page.intro}</p>{page.kind === "tour" && <Link className="button button-ivory" href="#tour-details">View full itinerary <span aria-hidden="true">↓</span></Link>}{page.kind === "packages" && <div className="button-row"><Link className="button button-ivory" href="#day-tours">Browse day tours <span aria-hidden="true">↓</span></Link><Link className="text-link" href="#round-tours">Browse round tours <span aria-hidden="true">↓</span></Link></div>}</div>
       <div className="hero-breadcrumb"><Link href="/">Home</Link><span>/</span><span>{page.kind === "tour" ? "Tours" : page.title}</span></div>
     </section>
   );
@@ -54,8 +54,8 @@ export function SitePage({ page }: { page: SitePageData }) {
     <>
       <Hero page={page} />
       {page.kind === "home" && <HomeSections />}
-      {page.kind === "packages" && <TourExplorer compact />}
-      {page.kind !== "home" && <section className={`content-section section-pad ${isTour ? "tour-layout" : ""}`} id="tour-details" data-decor-variant={decorVariant}>
+      {page.kind === "packages" && <TourPackagesSections />}
+      {page.kind !== "home" && page.kind !== "packages" && <section className={`content-section section-pad ${isTour ? "tour-layout" : ""}`} id="tour-details" data-decor-variant={decorVariant}>
         <div className="content-main">
           <ContentRenderer raw={page.raw} startAt={page.startAt} route={route} ensureGallery={isDayTour} />
         </div>
