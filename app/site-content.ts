@@ -222,11 +222,11 @@ export const pages: Record<string, SitePageData> = {
     kind: "about",
     title: "About Minoli Lanka Tours",
     kicker: "Our story",
-    intro: "Your Trusted Kandy-Based Partner for Authentic Sri Lanka Journeys",
+    intro: "Your Trusted Kandy-Based Partner for Authentic Sri Lanka Journeys. Discover the heart of Sri Lanka with a team that truly cares. We turn every trip into a personal, memorable experience filled with warmth, flexibility, and genuine hospitality.",
     raw: prepared(about),
     image: "/images/kandy.jpg",
     imageAlt: "Kandy landscape in Sri Lanka",
-    startAt: 3,
+    startAt: 6,
   },
   tours: {
     slug: "tours",

@@ -104,6 +104,10 @@ function buildSections(raw: string, startAt: number) {
     const line = removeDesignNotes(original);
     if (!line) continue;
 
+    if (line === "Get Your Personalized Quote" && current.heading?.startsWith("Ready to Experience Sri Lanka with Us")) {
+      current.blocks.push({ type: "paragraph", text: line });
+      continue;
+    }
     if (looksLikeHeading(line)) {
       current = { heading: line, blocks: [] };
       sections.push(current);
@@ -194,6 +198,9 @@ function renderBlock(block: Block, index: number): ReactNode {
   }
   if (block.text === "Explore All Day Tours →") {
     return <Link className="content-action-link" href="/tours#day-tours" key={index}>Explore all day tours <span aria-hidden="true">→</span></Link>;
+  }
+  if (block.text === "Get Your Personalized Quote") {
+    return <Link className="button button-gold" href="/contact" key={index}>Get Your Personalized Quote <span aria-hidden="true">→</span></Link>;
   }
   return <p key={index}>{block.text}</p>;
 }
