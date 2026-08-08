@@ -210,7 +210,7 @@ export const pages: Record<string, SitePageData> = {
     slug: "home",
     kind: "home",
     title: "Welcome to Sri Lanka’s Warmest Private Tour Experience",
-    kicker: "Kandy-based · Private · Personal",
+    kicker: "Kandy-based",
     intro: "Discover the Real Heart of Sri Lanka with Minoli Lanka Tours",
     raw: prepared(home),
     image: "/images/sigiriya.jpg",

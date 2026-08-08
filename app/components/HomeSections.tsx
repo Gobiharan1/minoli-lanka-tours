@@ -46,7 +46,6 @@ export function HomeSections() {
         <h2>Explore Sri Lanka with Minoli Lanka Tours</h2>
         <p>Sri Lanka is a land of endless wonders — ancient kingdoms, sacred temples, lush rainforests, rolling tea estates, pristine beaches, and incredible wildlife. With Minoli Lanka Tours, you experience it all in comfort and style. Our private tours blend must-see highlights with hidden gems, always delivered with genuine care, flexibility, and insider insights that only a local Kandy-based team can provide.</p>
         <p>Ready to explore? Choose from our popular day tours or thoughtfully designed round tours.</p>
-        <div className="button-row"><Link className="button button-gold" href="/tours">Browse all experiences <span aria-hidden="true">→</span></Link></div>
       </section>
 
       <section className="home-tours section-pad" id="featured-round-tours">
