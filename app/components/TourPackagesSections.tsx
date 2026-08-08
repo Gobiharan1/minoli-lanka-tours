@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { dayTours, roundTours } from "../site-content";
-import { whatsappUrl } from "../contact-details";
+import { emailAddress, emailHref, phoneDisplay, phoneHref, whatsappUrl } from "../contact-details";
 
 const dayTourDetails: Record<string, string> = {
   "kandy-city-tour": "Immerse yourself in Sri Lanka’s cultural capital. Visit the sacred Temple of the Tooth Relic (UNESCO), stroll around scenic Kandy Lake, admire panoramic views from Bahirawakanda Big Buddha, explore the magnificent Royal Botanical Gardens in Peradeniya, and end with a vibrant Kandyan Cultural Dance Show. Customizable with tea tasting or craft workshops.",
@@ -85,7 +85,7 @@ export function TourPackagesSections() {
       <section className="package-why section-pad">
         <div><p className="eyebrow">Travel with confidence</p><h2>Why Book With Us?</h2></div>
         <ul><li>Private tours only — no groups</li><li>Kandy-based local team</li><li>Flexible &amp; transparent pricing</li><li>24/7 support during your trip</li><li>Responsible tourism practices</li></ul>
-        <div className="package-why-cta"><h3>Ready to Explore Sri Lanka?</h3><p>Contact Minoli Lanka Tours today for availability, pricing, or to start planning your perfect trip.</p><div className="button-row"><a className="button button-gold" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp us <span aria-hidden="true">↗</span></a><a className="text-link" href="mailto:info@minolilankatours.com">info@minolilankatours.com</a></div></div>
+        <div className="package-why-cta"><h3>Ready to Explore Sri Lanka?</h3><p>Contact Minoli Lanka Tours today for availability, pricing, or to start planning your perfect trip.</p><div className="button-row"><a className="button button-gold" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp us <span aria-hidden="true">↗</span></a><a className="text-link" href={phoneHref}>{phoneDisplay}</a><a className="text-link" href={emailHref}>{emailAddress}</a></div></div>
       </section>
     </>
   );

@@ -18,11 +18,15 @@ function Hero({ page }: { page: SitePageData }) {
         </div>
         <span className="home-hero-shade" />
         <div className="hero-copy">
-          <p className="eyebrow">{page.kicker}</p>
-          <h1>{page.title}</h1>
-          <p className="hero-intro">{page.intro}</p>
-          <p>Immerse yourself in the breathtaking beauty, rich culture, and warm hospitality of Sri Lanka. As a trusted Kandy-based inbound tour operator, we specialize in private, personalized journeys that adapt to your pace, preferences, and dreams. Whether you seek ancient wonders, thrilling wildlife safaris, scenic hill country escapes, or relaxing beach getaways, our caring team ensures every moment feels safe, comfortable, and truly special.</p>
-          <div className="button-row"><Link className="button button-gold" href="/contact">Start Planning Your Adventure <span aria-hidden="true">→</span></Link><a className="text-link" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp us <span aria-hidden="true">↗</span></a></div>
+          <div className="hero-heading">
+            <p className="eyebrow">{page.kicker}</p>
+            <h1>{page.title}</h1>
+            <p className="hero-intro">{page.intro}</p>
+          </div>
+          <div className="hero-story">
+            <p>Immerse yourself in the breathtaking beauty, rich culture, and warm hospitality of Sri Lanka. As a trusted Kandy-based inbound tour operator, we specialize in private, personalized journeys that adapt to your pace, preferences, and dreams. Whether you seek ancient wonders, thrilling wildlife safaris, scenic hill country escapes, or relaxing beach getaways, our caring team ensures every moment feels safe, comfortable, and truly special.</p>
+            <div className="button-row"><Link className="button button-gold" href="/contact">Start Planning Your Adventure <span aria-hidden="true">→</span></Link><a className="text-link" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp us <span aria-hidden="true">↗</span></a></div>
+          </div>
         </div>
         <div className="hero-slide-labels" aria-label="Slideshow destinations">
           <span>Sigiriya · Cultural Triangle</span>
