@@ -31,7 +31,7 @@ export function HomeSections() {
   return (
     <>
       <section className="home-about section-pad" id="about">
-        <div className="home-about-image"><Image src="/images/kandy.jpg" alt="The beautiful Kandy landscape in Sri Lanka" fill sizes="(max-width: 760px) 100vw, 46vw" /></div>
+        <div className="home-about-image"><Image src="/images/minoli-guests-dining.jpg" alt="Minoli Lanka Tours guide sharing a relaxed meal with guests" fill sizes="(max-width: 760px) 100vw, 46vw" /></div>
         <div className="home-section-copy">
           <p className="eyebrow">About Minoli Lanka Tours</p>
           <h2>Your Kandy-Based Travel Partner Who Cares</h2>

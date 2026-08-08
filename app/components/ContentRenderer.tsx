@@ -55,7 +55,9 @@ function sectionClass(heading: string | null) {
   if (!heading) return "content-panel content-opening";
   if (/^Ready to|^Create Your Dream|^Get Your Personalized/.test(heading)) return "content-panel content-cta";
   if (/What Our Guests/.test(heading)) return "content-panel testimonial-section";
-  if (/^About Minoli|^Our Story|^Our Commitment/.test(heading)) return "content-panel story-section";
+  if (/^Our Story/.test(heading)) return "content-panel story-section about-story-section";
+  if (/^Meet Our Team/.test(heading)) return "content-panel story-section team-photo-section";
+  if (/^About Minoli|^Our Commitment/.test(heading)) return "content-panel story-section";
   if (/Why Choose|Our Mission|Our Values|Popular Custom|How It Works|Why Contact/.test(heading)) return "content-panel feature-section";
   if (/Featured Round|Popular Day|Our Popular|Our Signature/.test(heading)) return "content-panel offers-section";
   if (/Tour Summary/.test(heading)) return "content-panel facts-section";

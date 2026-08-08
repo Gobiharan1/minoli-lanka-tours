@@ -130,6 +130,8 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .content-list li::before { content: "✦"; position: absolute; left: 0; top: .05rem; color: var(--gold); font-size: .75rem; }
 .story-section { min-height: 510px; display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.2fr); grid-template-rows: auto 1fr; gap: 1.25rem clamp(2rem, 5vw, 5rem); align-items: start; }
 .story-section::before { content: ""; grid-row: 1 / 3; min-height: 420px; background: linear-gradient(0deg, rgba(8,40,31,.15), transparent), url('/images/kandy.jpg') center/cover; box-shadow: -16px 16px 0 var(--sand); }
+.about-story-section::before { background-image: linear-gradient(0deg, rgba(8,40,31,.12), transparent), url('/images/minoli-waterfall-guests.jpg'); background-position: center 38%; }
+.team-photo-section::before { background-image: linear-gradient(0deg, rgba(8,40,31,.12), transparent), url('/images/minoli-guide-guests.jpg'); background-position: center 38%; }
 .story-section h2, .story-section .panel-body { grid-column: 2; }
 .feature-section { background: var(--forest); color: white; }
 .feature-section h2 { color: white; }
