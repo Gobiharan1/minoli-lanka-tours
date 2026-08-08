@@ -1,14 +1,14 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { whatsappUrl } from "../contact-details";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="site-shell">
-      <div className="top-note">Private Sri Lanka journeys, thoughtfully made in Kandy</div>
       <header className="site-header">
         <Link className="brand" href="/" aria-label="Minoli Lanka Tours home">
           <span className="brand-mark" aria-hidden="true">M</span>
-          <span><b>Minoli Lanka</b><small>Tours · Sri Lanka</small></span>
+          <span><b>Minoli Lanka Tours</b><small>Sri Lanka</small></span>
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
           <Link href="/">Home</Link>
@@ -38,7 +38,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div>
             <Link className="brand brand-footer" href="/">
               <span className="brand-mark" aria-hidden="true">M</span>
-              <span><b>Minoli Lanka</b><small>Tours · Sri Lanka</small></span>
+              <span><b>Minoli Lanka Tours</b><small>Sri Lanka</small></span>
             </Link>
             <p>Private, personalized journeys delivered with warmth, flexibility, and genuine Sri Lankan hospitality.</p>
           </div>
@@ -48,7 +48,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </div>
         <div className="footer-bottom"><span>© 2026 Minoli Lanka Tours</span><span>Made with care in Kandy</span></div>
       </footer>
+      <a className="whatsapp-float" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Message Minoli Lanka Tours on WhatsApp" title="WhatsApp us">
+        <span aria-hidden="true">✆</span>
+      </a>
     </div>
   );
 }
-
