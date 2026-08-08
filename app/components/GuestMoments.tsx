@@ -15,7 +15,7 @@ export function GuestMoments({ eyebrow, title, intro, images, variant = "light" 
         <div><p className="eyebrow">{eyebrow}</p><h2>{title}</h2></div>
         <p>{intro}</p>
       </div>
-      <div className="guest-moments-grid">
+      <div className={`guest-moments-grid guest-moments-count-${images.length}`}>
         {images.map((src, index) => (
           <figure key={src}>
             <Image src={src} alt={`A Minoli Lanka Tours guest moment in Sri Lanka ${index + 1}`} fill sizes="(max-width: 760px) 100vw, 33vw" />
