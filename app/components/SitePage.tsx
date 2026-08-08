@@ -22,7 +22,6 @@ function Hero({ page }: { page: SitePageData }) {
           <p className="hero-intro">{page.intro}</p>
           <p>Immerse yourself in the breathtaking beauty, rich culture, and warm hospitality of Sri Lanka. As a trusted Kandy-based inbound tour operator, we specialize in private, personalized journeys that adapt to your pace, preferences, and dreams. Whether you seek ancient wonders, thrilling wildlife safaris, scenic hill country escapes, or relaxing beach getaways, our caring team ensures every moment feels safe, comfortable, and truly special.</p>
           <div className="button-row"><Link className="button button-gold" href="/contact">Start Planning Your Adventure <span aria-hidden="true">→</span></Link><Link className="text-link" href="/tours">Browse all experiences <span aria-hidden="true">↗</span></Link></div>
-          <div className="hero-trust"><span><b>Private</b> tours only</span><span><b>24/7</b> trip support</span><span><b>Local</b> Kandy team</span></div>
         </div>
         <div className="hero-slide-labels" aria-label="Slideshow destinations">
           <span>Sigiriya · Cultural Triangle</span>

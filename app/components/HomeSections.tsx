@@ -19,6 +19,14 @@ const testimonials = [
   ["Everything was perfect. We felt safe, well cared for, and could fully enjoy our holiday thanks to the caring team.", "Multiple guests"],
 ] as const;
 
+const roundTourDetails: Record<string, string> = {
+  "sri-lanka-classic-highlights-4-days": "Sri Lanka Classic Highlights – 4 Days / 3 Nights Pinnawala Elephant Orphanage, Sigiriya Rock Fortress, Minneriya Safari, Kandy Cultural Sites & Nuwara Eliya Tea Country. Perfect short escape with Kandy as your comfortable base.",
+  "sri-lanka-grand-highlights-7-days": "Sri Lanka Grand Highlights – 7 Days / 6 Nights Sigiriya & Dambulla, Kandy Temple of the Tooth, Scenic Train Ride to Ella, Yala Safari, and Mirissa Beach relaxation. The ideal balance of culture, nature, and coast.",
+  "sri-lanka-coastal-cultural-odyssey-8-days": "Sri Lanka Coastal & Cultural Odyssey – 8 Days / 7 Nights Southern beaches with whale watching, Galle Fort, Yala Safari, Hill Country train journey, Kandy, and Sigiriya. A perfect mix of relaxation and discovery.",
+  "sri-lanka-complete-discovery-10-days": "Sri Lanka Complete Discovery – 10 Days / 9 Nights Comprehensive coverage including Polonnaruwa Ancient City, multiple safaris, full hill country experience, and southern beaches. Ideal for first-time visitors wanting it all.",
+  "sri-lanka-grand-odyssey-14-days": "Sri Lanka Grand Odyssey – 14 Days / 13 Nights The ultimate in-depth journey: Anuradhapura & Polonnaruwa ancient cities, Sigiriya, Kandy, Ella’s scenic wonders, Yala & Minneriya safaris, whale watching in Mirissa, Galle Fort, Madu River, and Colombo. Perfect for travelers seeking a complete, unforgettable exploration of Sri Lanka.",
+};
+
 export function HomeSections() {
   return (
     <>
@@ -36,7 +44,8 @@ export function HomeSections() {
       <section className="home-explore section-pad">
         <p className="eyebrow">Private journeys · Local insight</p>
         <h2>Explore Sri Lanka with Minoli Lanka Tours</h2>
-        <p>Sri Lanka is a land of endless wonders — ancient kingdoms, sacred temples, lush rainforests, rolling tea estates, pristine beaches, and incredible wildlife. With Minoli Lanka Tours, you experience it all in comfort and style. Our private tours blend must-see highlights with hidden gems, always delivered with genuine care, flexibility, and insider insights from our local Kandy-based team.</p>
+        <p>Sri Lanka is a land of endless wonders — ancient kingdoms, sacred temples, lush rainforests, rolling tea estates, pristine beaches, and incredible wildlife. With Minoli Lanka Tours, you experience it all in comfort and style. Our private tours blend must-see highlights with hidden gems, always delivered with genuine care, flexibility, and insider insights that only a local Kandy-based team can provide.</p>
+        <p>Ready to explore? Choose from our popular day tours or thoughtfully designed round tours.</p>
         <div className="button-row"><Link className="button button-gold" href="/tours">Browse all experiences <span aria-hidden="true">→</span></Link></div>
       </section>
 
@@ -46,7 +55,7 @@ export function HomeSections() {
           {roundTours.map((tour) => (
             <Link className="home-tour-card" href={`/${tour.slug}`} key={tour.slug}>
               <span className="home-tour-image"><Image src={tour.image} alt="" fill sizes="(max-width: 760px) 100vw, 33vw" /></span>
-              <span className="home-tour-card-copy"><small>{tour.meta}</small><strong>{tour.title}</strong><span>{tour.blurb}</span><b>View full itinerary <span aria-hidden="true">↗</span></b></span>
+              <span className="home-tour-card-copy"><small>{tour.meta}</small><strong>{tour.title}</strong><span>{roundTourDetails[tour.slug]}</span><b>View full itinerary <span aria-hidden="true">↗</span></b></span>
             </Link>
           ))}
         </div>
