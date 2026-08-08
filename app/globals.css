@@ -71,12 +71,11 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .hero-story > p { max-width: 850px; margin: 0; color: rgba(255,255,255,.84); font-size: clamp(.88rem, .95vw, .98rem); line-height: 1.7; }
 .hero-story .button-row { margin: 0; gap: 1rem; justify-content: flex-end; }
 .hero-story .button { padding-inline: 1rem; font-size: .7rem; }
+.whatsapp-hero-button { background: #25d366; border-color: #25d366; color: #062f1b; }
+.whatsapp-hero-button:hover, .whatsapp-hero-button:focus-visible { background: #1fbd5a; border-color: #1fbd5a; color: #062f1b; }
 .home-hero .text-link { color: white; border-color: rgba(255,255,255,.65); }
 .hero-trust { margin-top: clamp(2rem, 6vh, 4rem); padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.24); display: flex; flex-wrap: wrap; gap: 1rem 2rem; color: rgba(255,255,255,.7); font-size: .75rem; }
 .hero-trust b { color: white; }
-.hero-slide-labels { position: absolute; z-index: 3; right: clamp(1.5rem, 5vw, 5rem); top: clamp(1.75rem, 4vw, 3.5rem); display: grid; justify-items: end; gap: .55rem; color: rgba(255,255,255,.78); font-size: .62rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.hero-slide-labels span { display: flex; align-items: center; gap: .7rem; }
-.hero-slide-labels span::after { content: ""; width: 26px; height: 1px; background: rgba(255,255,255,.45); }
 @keyframes homeHeroSlide { 0%, 31% { opacity: 1; } 36%, 100% { opacity: 0; } }
 @keyframes homeHeroZoom { 0% { transform: scale(1.08); } 36% { transform: scale(1); } 100% { transform: scale(1); } }
 
@@ -331,7 +330,6 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .hero-story > p { font-size: .88rem; line-height: 1.62; }
   .hero-copy .button-row { margin-top: 1.2rem; }
   .hero-trust { display: grid; grid-template-columns: 1fr 1fr; margin-top: 1.75rem; }
-  .hero-slide-labels { display: none; }
   .home-about { grid-template-columns: 1fr; }
   .home-about-image { min-height: 420px; }
   .home-round-grid, .home-day-grid, .reason-grid, .testimonial-grid { grid-template-columns: 1fr; }
