@@ -62,12 +62,11 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .hero-slides figure:nth-child(3) img { animation-delay: 12s; }
 .home-hero-shade { z-index: -2; background: linear-gradient(90deg, rgba(3,29,21,.68) 0%, rgba(3,29,21,.42) 48%, rgba(3,29,21,.08) 100%), linear-gradient(0deg, rgba(3,29,21,.42), transparent 60%); }
 .hero-copy { width: min(1440px, 100%); min-height: 100%; margin-inline: auto; padding: clamp(4rem, 6vw, 6rem) clamp(1.5rem, 7vw, 7rem); display: grid; grid-template-columns: 1fr; align-content: end; gap: clamp(1.75rem, 3vw, 3rem); position: relative; z-index: 2; }
-.hero-copy::before { content: ""; width: 90px; height: 1px; background: var(--gold); position: absolute; top: 12%; left: clamp(1.5rem, 7vw, 7rem); }
 .hero-copy h1, .inner-hero h1 { margin: 0; font: 600 clamp(3.4rem, 6.4vw, 7rem)/.88 var(--font-display), Georgia, serif; letter-spacing: -.045em; }
-.hero-copy h1 { max-width: 720px; color: white; font-size: clamp(2.8rem, 4.5vw, 4.8rem); line-height: .94; text-shadow: 0 2px 28px rgba(0,0,0,.16); }
-.hero-copy .hero-intro { margin: 1.5rem 0 0; max-width: 620px; color: var(--gold-light); font: 600 clamp(1.25rem, 1.8vw, 1.85rem)/1.2 var(--font-display), serif; }
-.hero-heading { max-width: 780px; }
-.hero-story { width: 100%; padding: clamp(1.25rem, 2vw, 1.8rem) clamp(1.35rem, 2.5vw, 2.25rem); display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(2rem, 5vw, 5rem); background: linear-gradient(135deg, rgba(255,255,255,.17), rgba(255,255,255,.055)); border: 1px solid rgba(255,255,255,.32); border-radius: 24px; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -1px 0 rgba(255,255,255,.08), 0 24px 70px rgba(0,0,0,.14); backdrop-filter: blur(24px) saturate(145%); }
+.hero-copy h1 { max-width: 1200px; color: white; font-size: clamp(2.8rem, 4.5vw, 4.8rem); line-height: .94; text-shadow: 0 2px 28px rgba(0,0,0,.16); }
+.hero-copy .hero-intro { margin: 1.5rem 0 0; max-width: 900px; color: var(--gold-light); font: 600 clamp(1.25rem, 1.8vw, 1.85rem)/1.2 var(--font-display), serif; }
+.hero-heading { max-width: 1200px; }
+.hero-story { width: 100%; padding: clamp(1.25rem, 2vw, 1.8rem) clamp(1.35rem, 2.5vw, 2.25rem); display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(2rem, 5vw, 5rem); background: linear-gradient(135deg, rgba(8,58,41,.22), rgba(4,35,25,.12)), linear-gradient(135deg, rgba(255,255,255,.15), rgba(255,255,255,.05)); border: 1px solid rgba(255,255,255,.32); border-radius: 24px; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -1px 0 rgba(255,255,255,.08), 0 24px 70px rgba(0,0,0,.14); backdrop-filter: blur(24px) saturate(145%); }
 .hero-story > p { max-width: 850px; margin: 0; color: rgba(255,255,255,.88); font-size: clamp(.8rem, .85vw, .9rem); line-height: 1.65; text-shadow: 0 1px 14px rgba(0,0,0,.18); }
 .hero-story .button-row { margin: 0; gap: 1rem; justify-content: flex-end; }
 .hero-story .button { padding-inline: 1rem; font-size: .7rem; }
@@ -291,7 +290,6 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .site-header > .button { display: none; }
   .mobile-menu { display: block; }
   .hero-copy { grid-template-columns: 1fr; gap: 1.75rem; padding-inline: clamp(1.5rem, 5vw, 4rem); }
-  .hero-copy::before { left: clamp(1.5rem, 5vw, 4rem); }
   .hero-copy h1 { font-size: clamp(2.75rem, 5vw, 4.2rem); }
   .hero-story { gap: 2rem; }
   .tour-card-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 420px 300px 300px; }
@@ -323,7 +321,6 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .whatsapp-logo { width: 38px; height: 38px; }
   .home-hero { height: auto; min-height: 100svh; align-items: flex-end; }
   .hero-copy { width: 100%; padding: 4.5rem 1.25rem 5.5rem; grid-template-columns: 1fr; gap: 1.5rem; }
-  .hero-copy::before { top: 2.5rem; width: 48px; }
   .hero-copy h1 { font-size: clamp(2.45rem, 10vw, 3.65rem); }
   .hero-copy .hero-intro { margin-top: 1.25rem; }
   .hero-story { max-width: none; padding: 1.2rem; display: block; border: 1px solid rgba(255,255,255,.3); border-left: 3px solid rgba(255,255,255,.55); border-radius: 18px; backdrop-filter: blur(18px) saturate(140%); }
